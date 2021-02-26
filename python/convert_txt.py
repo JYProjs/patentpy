@@ -85,10 +85,12 @@ def convert_txt_to_df(dates_df, output_file = None):
         
         # convert to txt data to csv format
         txt_to_df(curr_file, output_file if output_file is not None else temp_output_file, append, header)
+        remove(curr_file)
         
         # get df for that year, week if no output file specified
         if output_file is None:
             curr_df = pd.read_csv(temp_output_file)
             df_store.append(curr_df)
+            remove(temp_output_file)
             
     return pd.concat(df_store) if output_file is None else True
