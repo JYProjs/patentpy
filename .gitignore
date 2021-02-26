@@ -1,0 +1,8 @@
+.DS_Store
+*.zip
+*.txt
+*.csv
+*.xml
+
+/__pycache__
+/python/__pycache__
