@@ -28,13 +28,19 @@ Note that this uses pybind11 to wrap C++ code in python. Please see system requi
 Bulk patent data in TXT format (1976-2001) can be downloaded using the year and week (within each year) as follows:
 
 <!-- MODIFY BELOW -->
-```r
+```
+# import get_bulk_patent_data functionality
+from patentpy.python.acquire import get_bulk_patent_data
+
+
 # download patents from the first week of 1976 and get data frame
 patent_data = get_bulk_patent_data(year = 1976, week = 1)
 
 # download patents from the last 5 weeks of 1980
 # and store in a CSV file named "patent-data.csv"
-get_bulk_patent_data(year = (1980, 5), week = 48:52, output_file = "patent-data.csv")
+# Note: uspto patent data is reported on Tuesdays and 1980
+# has 53 Tuesdays, hence, 53 weeks worth of data
+get_bulk_patent_data(year = [1980]*5, week = range(49,54), output_file = "patent-data.csv")
 ```
 
 ## Functionality
