@@ -9,15 +9,15 @@ The patentpy package allows easy access to USPTO (United States Patent and Trade
 
 ## Installation
 
-```
+```bash
 # install from PyPI
 pip install patentpy
 
 # install from Anaconda -- TO-DO
 
 
-# to install development version
-# clone repository then run
+To install development version
+# clone repository then run follow code from its parent directory
 pip install ./patentpy
 ```
 <!-- DOES IT? -->
@@ -27,8 +27,7 @@ Note that this uses pybind11 to wrap C++ code in python. Please see system requi
 
 Bulk patent data in TXT format (1976-2001) can be downloaded using the year and week (within each year) as follows:
 
-<!-- MODIFY BELOW -->
-```
+```python
 # import get_bulk_patent_data functionality
 from patentpy.python.acquire import get_bulk_patent_data
 
