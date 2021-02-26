@@ -6,8 +6,7 @@ python:
   - "3.7"
   - "3.8"
   - "3.9"
-  - "3.9-dev" 
-  - "nightly"  
+  - "3.9-dev"  
 
 # command to run tests
 script:
