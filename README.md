@@ -1,6 +1,6 @@
 # patentpy: Access USPTO data in Rectangular Format
 
-<!-- To Do table for CI and pip wheel -->
+<!-- TO-DO table for CI and pip wheel -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
@@ -12,7 +12,9 @@ The patentpy package allows easy access to USPTO (United States Patent and Trade
 ```
 # install from PyPI
 pip install patentpy
-# install from Anaconda
+
+# install from Anaconda -- TO-DO
+
 
 # to install development version
 # clone repository then run
@@ -56,4 +58,4 @@ You can also fork the patentpy repository and create pull requests to add featur
 
 ## Citation
 
-Wadhwa RR, Yu J, Erdi P. patentpy: Access USPTO Bulk Data in Rectangular Format. 2021; Python package version 0.1.0. URL https://github.com/JYProjs/patentpy.
+Yu J, Wadhwa RR, Erdi P. patentpy: Access USPTO Bulk Data in Rectangular Format. 2021; Python package version 0.1.0. URL https://github.com/JYProjs/patentpy.
