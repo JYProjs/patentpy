@@ -9,7 +9,6 @@ python:
   - "3.9-dev" 
   - "nightly"  
 
-
 # command to run tests
 script:
   - python tests-python/test.py
