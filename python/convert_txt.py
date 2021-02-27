@@ -26,7 +26,7 @@ def convert_txt_to_df(dates_df, output_file = None):
     if output_file is not None:
         if not isinstance(output_file, str):
             raise ValueError("`output_file` parameter must be a path in the form of a string")
-        elif output_file[len(output_file)-4:len(output_file)] == ".csv":
+        elif output_file[len(output_file)-4:len(output_file)] != ".csv":
             raise ValueError('`output_file` parameter must be a ".csv" file')
     
     # base vars
