@@ -2,8 +2,8 @@
 
 |       CI          | status  |
 |-------------------|---------|
-| Linux Travis      | [![Build Status]([travis_badge])]([travis_url]) |
-| code coverage     | [![codecov_badge]([codecov])([codecov_url])  |
+| Linux Travis      | [![Build Status][travis_badge]][travis_url] |
+| code coverage     | [![codecov][codecov_badge]][codecov_url]  |
 
 [codecov_badge]:     https://codecov.io/gh/JYProjs/patentpy/branch/main/graph/badge.svg?token=OZWS94028B
 [codecov_url]:       https://codecov.io/gh/JYProjs/patentpy
