@@ -12,8 +12,8 @@ import urllib.request, shutil, zipfile
 from os import remove
 import pandas as pd
 
-from patentpy.convert_funcs import txt_to_df
-from patentpy.python.utility import get_date_tues
+from convert_funcs import txt_to_df
+from python.utility import get_date_tues
 
 
 def convert_txt_to_df(dates_df, output_file = None):
