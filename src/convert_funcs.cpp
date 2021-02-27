@@ -239,14 +239,14 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
 
     // output details of last patent
     fout << currID
-         << ",\"" << title
-         << "\"," << appDate
-         << "," << issDate
-         << "," << inventor
-         << "," << assignee
-         << "," << iclClass
-         << "," << refs
-         << "\n";
+        << ",\"" << title
+        << "\"," << appDate
+        << "," << issDate
+        << ",\"" << inventor
+        << "\",\"" << assignee
+        << "\"," << iclClass
+        << "," << refs
+        << "\n";
 
     // close IO
     fin.close();

@@ -3,12 +3,14 @@ from setuptools import setup
 # Available at setup time due to pyproject.toml
 from pybind11.setup_helpers import Pybind11Extension, build_ext
 from pybind11 import get_cmake_dir
+from os import path
 
 import sys
 
 __version__ = "0.1.0"
 
-with open("README.md", "r", encoding="utf-8") as f:
+curr_directory = path.abspath(path.dirname(__file__))
+with open(path.join(curr_directory, 'README.md'), encoding="utf-8") as f:
     long_description = f.read()
 
 ext_modules = [
