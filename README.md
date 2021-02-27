@@ -1,5 +1,15 @@
 # patentpy: Access USPTO data in Rectangular Format
 
+|       CI          | status  |
+|-------------------|---------|
+| Linux Travis      | [![Build Status]([travis_badge])]([travis_url]) |
+| code coverage     | [![codecov_badge]([codecov])([codecov_url])  |
+
+[codecov_badge]:     https://codecov.io/gh/JYProjs/patentpy/branch/main/graph/badge.svg?token=OZWS94028B
+[codecov_url]:       https://codecov.io/gh/JYProjs/patentpy
+[travis_badge]:      https://travis-ci.com/JYProjs/patentpy.svg?branch=main
+[travis_url]:        https://travis-ci.com/JYProjs/patentpy
+
 <!-- TO-DO table for CI and pip wheel -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
