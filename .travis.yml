@@ -17,7 +17,7 @@ install:
 
 # run tests
 script:
-  - pytest --cov-report=xml --cov=tests-python/
+  - python -m pytest --cov tests-python/
 
 after_success:
   - codecov
