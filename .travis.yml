@@ -13,4 +13,4 @@ install:
 
 # command to run tests
 script:
-  - python tests-python/test.py
+  - cd .. && python -m tests-python.test
