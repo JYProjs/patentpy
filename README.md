@@ -23,7 +23,7 @@ The patentpy package allows easy access to USPTO (United States Patent and Trade
 # install from PyPI
 pip install patentpy
 
-To install development version
+# To install development version
 # clone repository then run follow code from its parent directory
 pip install ./patentpy
 ```
