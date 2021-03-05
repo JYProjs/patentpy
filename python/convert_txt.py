@@ -18,11 +18,12 @@ def convert_txt_to_df(dates_df, output_file = None):
     temporary files are cleaned up).
     
     Args: 
-        date_df (DataFrame): DataFrame with columns: 1) 'year' and 2) 'week'
-        output_file (str): path of '.csv' file to store data, default `None` 
+        date_df (DataFrame): dataframe with columns: 1) 'year' and 2) 'week'.
+        output_file (str, default None): path of '.csv' file to store data. 
     
     Returns:
-        Dataframe, Boolean: returns pandas DataFrame object if ouput_file is `None` else returns boolean `True`
+        Dataframe or bool: returns ``pandas.DataFrame`` object if ouput_file is ``None``, 
+        else returns boolean ``True``
     """
     # check format of df; internal function so should not occur
     if not ('year' in dates_df.columns and 'week' in dates_df.columns):

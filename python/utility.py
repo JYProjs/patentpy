@@ -1,17 +1,17 @@
 import datetime
 
 def get_date_tues(year, week):
-    """Calculates Tuesday's date for week `week` of year `year`.
+    """Calculates Tuesday's date for week ``week`` of year ``year``.
     
     Helper function the USPTO patent grant date (Tuesdays) for a given `week` and `year` to aid in 
     obtaining file name and url containing zip folder to download.
     
     Args: 
-        year (int): integer corresponding to the `week` in year `year`.
-        week (int): integer corresponding to the `year`.
+        year (int): integer corresponding to the ``week`` th week in year ``year``.
+        week (int): integer corresponding to year ``year``.
     
     Returns:
-        Date: returns datetime.date corresponding to the Tuesday of week `week` of year `year`.
+        date: returns a ``datetime.date`` corresponding to the Tuesday of week ``week`` of year ``year``.
     """
         
     curr_day = datetime.datetime.now().date()

@@ -11,12 +11,7 @@ Python package
 
 External C++ module
 -------------------
+.. toctree::
+   :maxdepth: 4
 
-patentpy.convert\_funcs
------------------------
-
-.. automodule:: patentpy.convert_funcs
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
+   patentpy.convert_funcs

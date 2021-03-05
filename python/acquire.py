@@ -13,24 +13,26 @@ def get_bulk_patent_data(year, week, output_file = None):
     equal-length lists). Used to get data from multiple files, each corresponding to a 
     'year'-'week' pair, from USPTO website (which may be stored as TXT, XML1, or XML2 file formats).
 
-    Note: Current version only supports TXT file formats. XML1 and XML2 will be supported in the following
+    **Note**: Current version only supports TXT file formats. XML1 and XML2 will be supported in the following
     release. 
     
     Args: 
-        year (int, List[int]): integer or list of integers for 'year' in 'year'-'week' 
-            pair corresponding to patent grant issued that 'week' of 'year'
-        week (int, List[int]): integer or list of integers for 'week in 'year'-'week' 
-            pair corresponding to patent grant issued that 'week' of 'year'
-        output_file (str, optional): path of '.csv' file to store data, default `None` 
+        year (int or list[int]): integer or list of integers for 'year' in 'year'-'week' 
+            pair corresponding to patent grants issued the ``week`` th week of year ``year``.
+        week (int or list[int]): integer or list of integers for 'week in 'year'-'week' 
+            pair corresponding to patent grants issued that ``week`` th week of year ``year``.
+        output_file (str, default None): path of '.csv' file to store data.  
     
     Returns:
-        DataFrame, Boolean: returns pandas DataFrame object if ouput_file is `None` else returns boolean `True`
+        DataFrame or bool: returns ``pandas.DataFrame`` object if output_file is ``None`` 
+        else returns boolean ``True``
 
     Raises:
-        ValueError: If 'year' or 'week' are not both integers or equally-sized lists of 
-            integers, are missing values, or are invalid (i.e. week > 53, year < 1776). 
-        
-            Note: This purposely does not raise error if there is no week 53 patent data available 
+        ValueError: 
+            If 'year' or 'week' are not both integers or equally-sized lists of 
+            integers, are missing values, or contain invalid values (i.e. week > 53, year < 1776). 
+            
+            **Note**: This purposely does not raise error if there is no week 53 patent data available 
             for given year as a feature.
     """
     # convert to list if int
