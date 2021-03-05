@@ -1,15 +1,12 @@
-patentpy
-========
-
-Python package
---------------
+General Functions
+-----------------
 
 .. toctree::
    :maxdepth: 4
 
    patentpy.python
 
-External C++ module
+External C++ plugin
 -------------------
 .. toctree::
    :maxdepth: 4

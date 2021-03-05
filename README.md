@@ -10,7 +10,6 @@
 [travis_badge]:      https://travis-ci.com/JYProjs/patentpy.svg?branch=main
 [travis_url]:        https://travis-ci.com/JYProjs/patentpy
 
-<!-- TO-DO table for CI and pip wheel -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview

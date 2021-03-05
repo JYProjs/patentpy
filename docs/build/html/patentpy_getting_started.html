@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Introduction and First Steps &mdash; patentpy 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="General Functions" href="patentpy.html" />
+    <link rel="prev" title="Getting Started" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> patentpy
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction and First Steps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-code">Sample code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functionality">Functionality</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-collected-for-each-patent">Data collected for each patent</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="patentpy.html">General Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patentpy.html#external-c-plugin">External C++ plugin</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="patentpy_development.html">Release Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patentpy_development.html#contribute">Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patentpy_development.html#citation">Citation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">patentpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Introduction and First Steps</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/patentpy_getting_started.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction-and-first-steps">
+<h1>Introduction and First Steps<a class="headerlink" href="#introduction-and-first-steps" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg" /></a>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The patentpy package allows easy access to USPTO (United States Patent and Trademark Office) bulk patent data in rectangular format. By downloading, converting, and storing patent data directly from the USPTO website, patentpy minimizes the work needed to acquire usable data, allowing users to focus on analyzing the data.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install from PyPI</span>
+pip install patentpy
+
+<span class="c1"># To install development version</span>
+<span class="c1"># clone repository then run follow code from its parent directory</span>
+pip install ./patentpy
+</pre></div>
+</div>
+<p>Note that this uses pybind11 to wrap C++ code in python. Please see system requirements for pybind11.</p>
+</div>
+<div class="section" id="sample-code">
+<h2>Sample code<a class="headerlink" href="#sample-code" title="Permalink to this headline">¶</a></h2>
+<p>Bulk patent data in TXT format (1976-2001) can be downloaded using the year and week (within each year) as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import get_bulk_patent_data functionality</span>
+<span class="kn">from</span> <span class="nn">patentpy.python.acquire</span> <span class="kn">import</span> <span class="n">get_bulk_patent_data</span>
+
+
+<span class="c1"># download patents from the first week of 1976 and get data frame</span>
+<span class="n">patent_data</span> <span class="o">=</span> <span class="n">get_bulk_patent_data</span><span class="p">(</span><span class="n">year</span> <span class="o">=</span> <span class="mi">1976</span><span class="p">,</span> <span class="n">week</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># download patents from the last 5 weeks of 1980</span>
+<span class="c1"># and store in a CSV file named &quot;patent-data.csv&quot;</span>
+<span class="c1"># Note: uspto patent data is reported on Tuesdays and 1980</span>
+<span class="c1"># has 53 Tuesdays, hence, 53 weeks worth of data</span>
+<span class="n">get_bulk_patent_data</span><span class="p">(</span><span class="n">year</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1980</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span><span class="p">,</span> <span class="n">week</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">49</span><span class="p">,</span><span class="mi">54</span><span class="p">),</span> <span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;patent-data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Specific documentation of <code class="docutils literal notranslate"><span class="pre">get_bulk_patent_data</span></code> ‘s use can be found under “General Functions”.</p>
+<p>It is recommended to use <code class="docutils literal notranslate"><span class="pre">get_bulk_patent_data</span></code> (which calls a helper function <code class="docutils literal notranslate"><span class="pre">convert_txt_to_df</span></code>)
+rather than calling <code class="docutils literal notranslate"><span class="pre">convert_txt_to_df</span></code> directly as input values are checked more rigorously in the former.
+Please carefully read the documentation if using <code class="docutils literal notranslate"><span class="pre">convert_txt_to_df</span></code> directly.</p>
+</div>
+<div class="section" id="functionality">
+<h2>Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-collected-for-each-patent">
+<h3>Data collected for each patent<a class="headerlink" href="#data-collected-for-each-patent" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>patent title</p></li>
+<li><p>application date</p></li>
+<li><p>patent issue date</p></li>
+<li><p>text in patent abstract</p></li>
+<li><p>inventor name(s)</p></li>
+<li><p>assignee name(s)</p></li>
+<li><p>ICL classification</p></li>
+<li><p>unique identifier (AKA patent number)</p></li>
+<li><p>referenced patent numbers</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="patentpy.html" class="btn btn-neutral float-right" title="General Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, James Yu.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

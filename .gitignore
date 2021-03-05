@@ -12,6 +12,5 @@
 /tests-python/__pycache__
 /.vscode
 /build
-/docs/_static
 /docs/_templates
 /docs/_build

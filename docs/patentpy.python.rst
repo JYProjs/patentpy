@@ -1,6 +1,3 @@
-General Functions
-=================
-
 patentpy.python.acquire
 -----------------------
 
