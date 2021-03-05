@@ -1,9 +1,18 @@
 import datetime
 
 def get_date_tues(year, week):
-    # check `year` and `week` are integers; should not hit this error
-    #if not ( isinstance(year, int) and isinstance(week, int) ):
-    #    raise ValueError("`year` and `week` parameters must be integers")
+    """Calculates Tuesday's date for week `week` of year `year`.
+    
+    Helper function the USPTO patent grant date (Tuesdays) for a given `week` and `year` to aid in 
+    obtaining file name and url containing zip folder to download.
+    
+    Args: 
+        year (int): integer corresponding to the `week` in year `year`.
+        week (int): integer corresponding to the `year`.
+    
+    Returns:
+        Date: returns datetime.date corresponding to the Tuesday of week `week` of year `year`.
+    """
         
     curr_day = datetime.datetime.now().date()
         

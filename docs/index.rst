@@ -10,9 +10,7 @@ Welcome to patentpy's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   modules
-   
-
+   patentpy
 
 
 Indices and tables

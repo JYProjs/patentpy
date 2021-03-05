@@ -1,12 +1,3 @@
-// TO-DO
-// write python functions that use convert funcs
-// link documentation to python funcs through sphinx
-// figure how to use CI tools (at least Travis, appveyor and pip builds)
-// polish README
-// setup.py - add long description with markdown?
-// Ask Raoul about collecting Background of invention, claims, diagrams & figs, etc.
-// ASk Raoul about licensing, 
-
 #include <iostream>
 #include <fstream>
 #include <string>

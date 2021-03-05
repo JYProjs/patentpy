@@ -1,12 +1,3 @@
-# convert multiple TXT files
-# internal function
-# date_df: column1 = year; column2 = week
-# output_file should be a CSV
-# returns data frame of patent data of output_file == NULL; TRUE otherwise
-# if:
-#   - output_file = NULL is used to acquire data and stored into `df1`
-#   - output_file = <filename> is used to acquire data and then read into `df2` with `read.csv`
-#     (read.csv(<filename>, colClasses = rep("character", 8), na.strings = c("NA", "N/A", "")))
 import sys, traceback, datetime
 import urllib.request, shutil, zipfile
 from os import remove
@@ -17,6 +8,22 @@ from python.utility import get_date_tues
 
 
 def convert_txt_to_df(dates_df, output_file = None):
+    """Converts multiple TXT files to CSV format or a dataframe.
+    
+    Iterates through each row in dates_df DataFrame and downloads zip file from United States Patent 
+    Trademark Office (USPTO) url corresponding to patent data from that row's 'year' and 'week'. 
+    Extracts each zip folder (contains txt file) and parses TXT files (using helper function `txt_to_df`), 
+    extracting fields and converting to csv file format. If no output file is provided then a 
+    temporary csv file is created, read into pandas dataframe and returned (zip, txt, and any 
+    temporary files are cleaned up).
+    
+    Args: 
+        date_df (DataFrame): DataFrame with columns: 1) 'year' and 2) 'week'
+        output_file (str): path of '.csv' file to store data, default `None` 
+    
+    Returns:
+        Dataframe, Boolean: returns pandas DataFrame object if ouput_file is `None` else returns boolean `True`
+    """
     # check format of df; internal function so should not occur
     if not ('year' in dates_df.columns and 'week' in dates_df.columns):
         raise ValueError("`dates_df` parameter must have `year` and `week` columns; current columns = {}"

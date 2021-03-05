@@ -1,13 +1,3 @@
-# User-facing function to get bulk patent data from USPTO (TXT, XML1, and XML2 formats) and convert it to rectangular.
-# Function parameters include:
-# `year` (int or [int])
-# `week` (int or [int])
-# `output_file` (string - optional, defualt = None),
-# Download respective zip files from USPTO website <https://bulkdata.uspto.gov>
-# Return pandas dataframe (no output file) or True (output file)
-    ##### need to notify completion with/without errors #####
-
-# import pandas & numpy for df manipulation and datetime to get current date
 import datetime
 import numpy as np
 import pandas as pd
@@ -16,6 +6,33 @@ from python.convert_txt import convert_txt_to_df
 
 # User-facing function `get_bulk_patent_data()`
 def get_bulk_patent_data(year, week, output_file = None):
+    """Obtains USPTO data in csv or dataframe from user-inputted values, `year` and `week`.  
+    
+    User-friendly function that utilizes `convert_txt_to_df` helper function after error 
+    checking user-inputted `year` and `week` values (May either both be integer values or 
+    equal-length lists). Used to get data from multiple files, each corresponding to a 
+    'year'-'week' pair, from USPTO website (which may be stored as TXT, XML1, or XML2 file formats).
+
+    Note: Current version only supports TXT file formats. XML1 and XML2 will be supported in the following
+    release. 
+    
+    Args: 
+        year (int, List[int]): integer or list of integers for 'year' in 'year'-'week' 
+            pair corresponding to patent grant issued that 'week' of 'year'
+        week (int, List[int]): integer or list of integers for 'week in 'year'-'week' 
+            pair corresponding to patent grant issued that 'week' of 'year'
+        output_file (str, optional): path of '.csv' file to store data, default `None` 
+    
+    Returns:
+        DataFrame, Boolean: returns pandas DataFrame object if ouput_file is `None` else returns boolean `True`
+
+    Raises:
+        ValueError: If 'year' or 'week' are not both integers or equally-sized lists of 
+            integers, are missing values, or are invalid (i.e. week > 53, year < 1776). 
+        
+            Note: This purposely does not raise error if there is no week 53 patent data available 
+            for given year as a feature.
+    """
     # convert to list if int
     year = [year] if isinstance(year, int) else year
     week = [week] if isinstance(week, int) else week
