@@ -3,6 +3,12 @@
 *.txt
 *.csv
 *.xml
+*.coverage
+*.so
+
 
 /__pycache__
 /python/__pycache__
+/tests-python/__pycache__
+/.vscode
+/build
