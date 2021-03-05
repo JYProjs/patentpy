@@ -23,14 +23,10 @@ The patentpy package allows easy access to USPTO (United States Patent and Trade
 # install from PyPI
 pip install patentpy
 
-# install from Anaconda -- TO-DO
-
-
 To install development version
 # clone repository then run follow code from its parent directory
 pip install ./patentpy
 ```
-<!-- DOES IT? -->
 Note that this uses pybind11 to wrap C++ code in python. Please see system requirements for pybind11.
 
 ## Sample code
