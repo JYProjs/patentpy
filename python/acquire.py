@@ -28,12 +28,14 @@ def get_bulk_patent_data(year, week, output_file = None):
         else returns boolean ``True``
 
     Raises:
+        TypeError:
+            If ``year`` or ``week`` are not both integers or equally-sized lists of integers
         ValueError: 
-            If 'year' or 'week' are not both integers or equally-sized lists of 
-            integers, are missing values, or contain invalid values (i.e. week > 53, year < 1776). 
-            
-            **Note**: This purposely does not raise error if there is no week 53 patent data available 
-            for given year as a feature.
+            When ``year`` or ``week`` contain missing values or contain invalid values 
+            (i.e. week > 53, year < 1776). 
+
+            **Note**: An error will not be raised if there is no week 53 patent data available 
+            for that specific year or dates are in the future.
     """
     # convert to list if int
     year = [year] if isinstance(year, int) else year
@@ -41,7 +43,7 @@ def get_bulk_patent_data(year, week, output_file = None):
 
     # not list, int, or float error
     if not ( isinstance(year, list) and isinstance(week, list) ):
-        raise ValueError("`year` and `week` parameters must be integers")
+        raise TypeError("`year` and `week` parameters must be integers")
     # unequal length lists error
     if len(year) != len(week):
         raise ValueError("`year` and `week` parameters should be of equal lengths: \nyear = {}\nweek = {}"
@@ -54,7 +56,7 @@ def get_bulk_patent_data(year, week, output_file = None):
     # values of wrong type error
     if not ( all(isinstance(x, int) for x in year) and 
             all(isinstance(x, int) for x in week) ):
-        raise ValueError("`year` and `week` parameters should be integer values: \nyear = {}\nweek = {}"
+        raise TypeError("`year` and `week` parameters should be integer values: \nyear = {}\nweek = {}"
                          .format(year, week))
     # get current day
     # add buffer for not yet uploaded current week of USPTO bulk patent data?

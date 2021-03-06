@@ -24,9 +24,14 @@ def convert_txt_to_df(dates_df, output_file = None):
     Returns:
         Dataframe or bool: returns ``pandas.DataFrame`` object if ouput_file is ``None``, 
         else returns boolean ``True``
+
+    Raises:
+        ValueError: 
+            if `dates_df` does not contain columns 1) 'year' or 2) 'week' or if `output_file` is not a
+            ".csv" file.
     """
     # check format of df; internal function so should not occur
-    if not ('year' in dates_df.columns and 'week' in dates_df.columns):
+    if not ('year' == dates_df.columns[0] and 'week' == dates_df.columns[1]):
         raise ValueError("`dates_df` parameter must have `year` and `week` columns; current columns = {}"
                          .format(dates_df.columns))
         

@@ -12,12 +12,13 @@ install:
   - pip install numpy
   - pip install pandas
   - pip install codecov
+  - pip install pytest
   - pip install pytest-cov
   - pip install .
 
 # run tests
 script:
-  - python -m pytest --cov tests-python/
+  - python -m pytest --cov=. tests-python/
 
 after_success:
   - codecov
