@@ -21,9 +21,6 @@ ext_modules = [
         ),
 ]
 
-classes = ["Programming Language :: Python :: 3", 
-            "License :: OSI Approved :: MIT License",
-            "Operating System :: OS Independent",]
 
 setup(
     name="patentpy",
@@ -36,6 +33,9 @@ setup(
     url="https://github.com/JYProjs/patentpy",
     ext_modules=ext_modules,
     install_requires=["pandas", "numpy"],
-    classifiers=classes,
+    classifiers=
+            "Programming Language :: Python :: 3"
+            "License :: OSI Approved :: MIT License"
+            "Operating System :: OS Independent",
     zip_safe=False,
 )
