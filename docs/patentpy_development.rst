@@ -1,3 +1,6 @@
+Development
+===========
+
 Release Info
 ------------
 Current version 0.1.0 supports TXT conversions of USPTO bulk patent data (Full Text - no images) to csv and dataframe format.
