@@ -14,3 +14,5 @@
 /build
 /docs/_templates
 /docs/build/doctrees
+/dist
+/patentpy.egg-info
