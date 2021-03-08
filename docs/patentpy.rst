@@ -1,17 +1,34 @@
-API reference
-=============
-
 General Functions
+=================
+
+patentpy.acquire
 -----------------
 
-.. toctree::
-   :maxdepth: 4
+.. automodule:: patentpy.acquire
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-   patentpy.python
+patentpy.convert\_txt
+---------------------
 
-External C++ plugin
--------------------
-.. toctree::
-   :maxdepth: 4
+.. automodule:: patentpy.convert_txt
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-   patentpy.convert_funcs
+patentpy.utility
+----------------
+
+.. automodule:: patentpy.utility
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: patentpy
+   :members:
+   :undoc-members:
+   :show-inheritance:

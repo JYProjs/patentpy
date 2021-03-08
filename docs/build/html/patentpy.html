@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>API reference &mdash; patentpy 0.1.0 documentation</title>
+  <title>General Functions &mdash; patentpy 0.1.0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="patentpy.python.acquire" href="patentpy.python.html" />
-    <link rel="prev" title="Introduction and First Steps" href="patentpy_getting_started.html" /> 
+    <link rel="next" title="External C++ plugin" href="convert_funcs.html" />
+    <link rel="prev" title="API reference" href="modules.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,17 +88,15 @@
 <li class="toctree-l1"><a class="reference internal" href="patentpy_getting_started.html">Introduction and First Steps</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#general-functions">General Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="patentpy.python.html">patentpy.python.acquire</a></li>
-<li class="toctree-l3"><a class="reference internal" href="patentpy.python.html#module-patentpy.python.convert_txt">patentpy.python.convert_txt_to_df</a></li>
-<li class="toctree-l3"><a class="reference internal" href="patentpy.python.html#module-patentpy.python.utility">patentpy.python.utility</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">General Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-patentpy.acquire">patentpy.acquire</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-patentpy.convert_txt">patentpy.convert_txt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-patentpy.utility">patentpy.utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-patentpy">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#external-c-plugin">External C++ plugin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="patentpy.convert_funcs.html">patentpy.convert_funcs</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="convert_funcs.html">External C++ plugin</a></li>
 </ul>
 </li>
 </ul>
@@ -152,7 +150,9 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>API reference</li>
+          <li><a href="modules.html">API reference</a> &raquo;</li>
+        
+      <li>General Functions</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -171,25 +171,109 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="api-reference">
-<h1>API reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="general-functions">
-<h2>General Functions<a class="headerlink" href="#general-functions" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="patentpy.python.html">patentpy.python.acquire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="patentpy.python.html#module-patentpy.python.convert_txt">patentpy.python.convert_txt_to_df</a></li>
-<li class="toctree-l1"><a class="reference internal" href="patentpy.python.html#module-patentpy.python.utility">patentpy.python.utility</a></li>
+  <div class="section" id="general-functions">
+<h1>General Functions<a class="headerlink" href="#general-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-patentpy.acquire">
+<span id="patentpy-acquire"></span><h2>patentpy.acquire<a class="headerlink" href="#module-patentpy.acquire" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="patentpy.acquire.get_bulk_patent_data">
+<code class="sig-prename descclassname">patentpy.acquire.</code><code class="sig-name descname">get_bulk_patent_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">year</span></em>, <em class="sig-param"><span class="n">week</span></em>, <em class="sig-param"><span class="n">output_file</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.acquire.get_bulk_patent_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtains USPTO data in csv or dataframe from user-inputted values, <cite>year</cite> and <cite>week</cite>.</p>
+<p>User-friendly function that utilizes <cite>convert_txt_to_df</cite> helper function after error
+checking user-inputted <cite>year</cite> and <cite>week</cite> values (May either both be integer values or
+equal-length lists). Used to get data from multiple files, each corresponding to a
+‘year’-‘week’ pair, from USPTO website (which may be stored as TXT, XML1, or XML2 file formats).</p>
+<p><strong>Note</strong>: Current version only supports TXT file formats. XML1 and XML2 will be supported in the following
+release.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year</strong> (<em>int</em><em> or </em><em>list</em><em>[</em><em>int</em><em>]</em>) – integer or list of integers for ‘year’ in ‘year’-‘week’
+pair corresponding to patent grants issued the <code class="docutils literal notranslate"><span class="pre">week</span></code> th week of year <code class="docutils literal notranslate"><span class="pre">year</span></code>.</p></li>
+<li><p><strong>week</strong> (<em>int</em><em> or </em><em>list</em><em>[</em><em>int</em><em>]</em>) – integer or list of integers for ‘week in ‘year’-‘week’
+pair corresponding to patent grants issued that <code class="docutils literal notranslate"><span class="pre">week</span></code> th week of year <code class="docutils literal notranslate"><span class="pre">year</span></code>.</p></li>
+<li><p><strong>output_file</strong> (<em>str</em><em>, </em><em>default None</em>) – path of ‘.csv’ file to store data.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="external-c-plugin">
-<h2>External C++ plugin<a class="headerlink" href="#external-c-plugin" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="patentpy.convert_funcs.html">patentpy.convert_funcs</a></li>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>DataFrame or bool</em> – returns <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> object if output_file is <code class="docutils literal notranslate"><span class="pre">None</span></code>
+else returns boolean <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>TypeError</strong> – If <code class="docutils literal notranslate"><span class="pre">year</span></code> or <code class="docutils literal notranslate"><span class="pre">week</span></code> are not both integers or equally-sized lists of integers</p></li>
+<li><p><strong>ValueError</strong> – When <code class="docutils literal notranslate"><span class="pre">year</span></code> or <code class="docutils literal notranslate"><span class="pre">week</span></code> contain missing values or contain invalid values
+    (i.e. week &gt; 53, year &lt; 1776).
+    
+    <strong>Note</strong>: An error will not be raised if there is no week 53 patent data available
+    for that specific year or dates are in the future.</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
+<div class="section" id="module-patentpy.convert_txt">
+<span id="patentpy-convert-txt"></span><h2>patentpy.convert_txt<a class="headerlink" href="#module-patentpy.convert_txt" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="patentpy.convert_txt.convert_txt_to_df">
+<code class="sig-prename descclassname">patentpy.convert_txt.</code><code class="sig-name descname">convert_txt_to_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dates_df</span></em>, <em class="sig-param"><span class="n">output_file</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.convert_txt.convert_txt_to_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts multiple TXT files to CSV format or a dataframe.</p>
+<p>Iterates through each row in dates_df DataFrame and downloads zip file from United States Patent
+Trademark Office (USPTO) url corresponding to patent data from that row’s ‘year’ and ‘week’.
+Extracts each zip folder (contains txt file) and parses TXT files (using helper function <cite>txt_to_df</cite>),
+extracting fields and converting to csv file format. If no output file is provided then a
+temporary csv file is created, read into pandas dataframe and returned (zip, txt, and any
+temporary files are cleaned up).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date_df</strong> (<em>DataFrame</em>) – dataframe with columns: 1) ‘year’ and 2) ‘week’.</p></li>
+<li><p><strong>output_file</strong> (<em>str</em><em>, </em><em>default None</em>) – path of ‘.csv’ file to store data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>Dataframe or bool</em> – returns <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> object if ouput_file is <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+else returns boolean <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if <cite>dates_df</cite> does not contain columns 1) ‘year’ or 2) ‘week’ or if <cite>output_file</cite> is not a
+    “.csv” file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-patentpy.utility">
+<span id="patentpy-utility"></span><h2>patentpy.utility<a class="headerlink" href="#module-patentpy.utility" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="patentpy.utility.get_date_tues">
+<code class="sig-prename descclassname">patentpy.utility.</code><code class="sig-name descname">get_date_tues</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">year</span></em>, <em class="sig-param"><span class="n">week</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.utility.get_date_tues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates Tuesday’s date for week <code class="docutils literal notranslate"><span class="pre">week</span></code> of year <code class="docutils literal notranslate"><span class="pre">year</span></code>.</p>
+<p>Helper function the USPTO patent grant date (Tuesdays) for a given <cite>week</cite> and <cite>year</cite> to aid in
+obtaining file name and url containing zip folder to download.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year</strong> (<em>int</em>) – integer corresponding to the <code class="docutils literal notranslate"><span class="pre">week</span></code> th week in year <code class="docutils literal notranslate"><span class="pre">year</span></code>.</p></li>
+<li><p><strong>week</strong> (<em>int</em>) – integer corresponding to year <code class="docutils literal notranslate"><span class="pre">year</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>date</em> – returns a <code class="docutils literal notranslate"><span class="pre">datetime.date</span></code> corresponding to the Tuesday of week <code class="docutils literal notranslate"><span class="pre">week</span></code> of year <code class="docutils literal notranslate"><span class="pre">year</span></code>.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>TypeError</strong> – If ‘year’ or ‘week’ are not both integers. Will exit.</p></li>
+<li><p><strong>ValueError</strong> – When calculated date is not in valid range (1976 - present), i.e date is in the future.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-patentpy">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-patentpy" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -199,8 +283,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="patentpy.python.html" class="btn btn-neutral float-right" title="patentpy.python.acquire" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="patentpy_getting_started.html" class="btn btn-neutral float-left" title="Introduction and First Steps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="convert_funcs.html" class="btn btn-neutral float-right" title="External C++ plugin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-left" title="API reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

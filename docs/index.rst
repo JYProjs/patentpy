@@ -26,7 +26,7 @@ Usage
 .. toctree::
    :maxdepth: 2
 
-   patentpy
+   modules
 
 
 More Info

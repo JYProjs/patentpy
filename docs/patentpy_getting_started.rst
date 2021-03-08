@@ -26,7 +26,8 @@ Installation
    # clone repository then run follow code from its parent directory
    pip install ./patentpy
 
-Note that this uses pybind11 to wrap C++ code in python. Please see system requirements for pybind11.
+Note: This package uses pybind11 to wrap C++ code in python and requires python3. 
+Please see any pybind11 requirements for more specific details.
 
 Sample code
 -----------
@@ -50,8 +51,8 @@ Bulk patent data in TXT format (1976-2001) can be downloaded using the year and 
 
 Specific documentation of ``get_bulk_patent_data`` 's use can be found under "General Functions".
 
-It is recommended to use ``get_bulk_patent_data`` (which calls a helper function ``convert_txt_to_df``) 
-rather than calling ``convert_txt_to_df`` directly as input values are checked more rigorously in the former. 
+It is recommended to use ``get_bulk_patent_data`` (which calls ``convert_txt_to_df``) rather than 
+calling ``convert_txt_to_df`` directly as the former better handles invalid arguments. 
 Please carefully read the documentation if using ``convert_txt_to_df`` directly.
 
 Functionality
