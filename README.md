@@ -62,6 +62,9 @@ get_bulk_patent_data(year = [1980]*5, week = range(49,54), output_file = "patent
 * unique identifier (AKA patent number)
 * referenced patent numbers
 
+### Documentation
+https://jyprojs.github.io/patentpy/index.html
+
 ## Contribute
 
 To contribute to patentpy, you can create issues for any bugs/suggestions on the [issues page](https://github.com/JYProjs/patentpy/issues).
