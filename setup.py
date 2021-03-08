@@ -31,7 +31,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/JYProjs/patentpy",
-    packages = ["python"],
+    packages = ["patentpy"],
     ext_modules=ext_modules,
     install_requires=["pandas", "numpy"],
     classifiers= [

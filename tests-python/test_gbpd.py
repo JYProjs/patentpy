@@ -1,9 +1,9 @@
 import pytest, pandas
 from os import remove
 from datetime import date
-from python.utility import get_date_tues
-from python.convert_txt import convert_txt_to_df
-from python.acquire import get_bulk_patent_data
+from patentpy.utility import get_date_tues
+from patentpy.convert_txt import convert_txt_to_df
+from patentpy.acquire import get_bulk_patent_data
 
 ### TEST_GET_BULK_PATENT_DATA ###
 # test generic; should return true and create/append to csv file.

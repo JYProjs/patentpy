@@ -2,7 +2,7 @@ import datetime
 import numpy as np
 import pandas as pd
 
-from python.convert_txt import convert_txt_to_df
+from patentpy.convert_txt import convert_txt_to_df
 
 # User-facing function `get_bulk_patent_data()`
 def get_bulk_patent_data(year, week, output_file = None):
