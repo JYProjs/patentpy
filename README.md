@@ -26,7 +26,7 @@ pip install patentpy
 # clone repository then run follow code from its parent directory
 pip install ./patentpy
 ```
-Note: This package uses pybind11 to wrap C++ code in python and requires python3. 
+Note: This package uses pybind11 to wrap C++ code in python and requires python3 as well as gcc. 
 Please see any pybind11 requirements for more specific details.
 
 ## Sample code
