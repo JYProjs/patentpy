@@ -25,12 +25,13 @@ ext_modules = [
 setup(
     name="patentpy",
     version=__version__,
-    author="James Yu",
+    author="James Yu, Raoul Wadhwa, Peter Erdi",
     author_email="jyu140@jhu.edu",
     description="A project taking USPTO bulk patent data and converting it to rectangular format using pybind11",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/JYProjs/patentpy",
+    packages = ["python"],
     ext_modules=ext_modules,
     install_requires=["pandas", "numpy"],
     classifiers= [
