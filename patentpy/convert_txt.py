@@ -35,7 +35,7 @@ def convert_txt_to_df(dates_df, output_file = None):
         raise ValueError("`dates_df` parameter must have `year` and `week` columns; current columns = {}"
                          .format(dates_df.columns))
         
-    # if output_file provided, check is .csv ----- move to acquire?
+    # if output_file provided, check is .csv
     if output_file is not None:
         if not isinstance(output_file, str):
             raise ValueError("`output_file` parameter must be a path in the form of a string")

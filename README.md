@@ -14,7 +14,7 @@
 
 ## Overview
 
-The patentpy package allows easy access to USPTO (United States Patent and Trademark Office) bulk patent data in rectangular format. By downloading, converting, and storing patent data directly from the USPTO website, patentpy minimizes the work needed to acquire usable data, allowing users to focus on analyzing the data.
+The patentpy package allows easy access to USPTO (United States Patent and Trademark Office) bulk patent data in rectangular format. By downloading, converting, and storing patent data directly from the USPTO website, patentpy minimizes the work needed to acquire usable data, allowing users to focus on analyzing the data. The R version of this can be found at https://github.com/JYProjs/patentr.
 
 ## Installation
 
@@ -31,7 +31,7 @@ Please see any pybind11 requirements for more specific details.
 
 ## Sample code
 
-Bulk patent data in TXT format (1976-2001) can be downloaded using the year and week (within each year) as follows:
+Bulk patent data in TXT or XML format (1976+) can be downloaded using the year and week (within each year) as follows:
 
 ```python
 # import get_bulk_patent_data functionality
@@ -58,7 +58,7 @@ get_bulk_patent_data(year = [1980]*5, week = range(49,54), output_file = "patent
 * text in patent abstract
 * inventor name(s)
 * assignee name(s)
-* ICL classification
+* ICL classification (IPC or Locarno)
 * unique identifier (AKA patent number)
 * referenced patent numbers
 

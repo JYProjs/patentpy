@@ -7,7 +7,7 @@ from os import path
 
 import sys
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 curr_directory = path.abspath(path.dirname(__file__))
 with open(path.join(curr_directory, 'README.md'), encoding="utf-8") as f:
@@ -33,7 +33,7 @@ setup(
     url="https://github.com/JYProjs/patentpy",
     packages = ["patentpy"],
     ext_modules=ext_modules,
-    install_requires=["pandas", "numpy"],
+    install_requires=["pandas", "lxml"],
     classifiers= [
             "Programming Language :: Python :: 3",
             "Programming Language :: C++",

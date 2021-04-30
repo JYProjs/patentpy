@@ -1,5 +1,4 @@
 import datetime
-import numpy as np
 import pandas as pd
 
 from patentpy.convert_txt import convert_txt_to_df
@@ -69,7 +68,8 @@ def get_bulk_patent_data(year, week, output_file = None):
         raise ValueError("`week` value(s) must be between 1 and 53, inclusive")
         
     # create dataframe
-    dates_df = pd.DataFrame(data = np.c_[year,week], columns = ['year', 'week'])
+    dates_df = pd.DataFrame(data = year, columns = ['year'])
+    dates_df['week'] = week
     
     # separate for different formats
     # what is sgml 2001 and patft 1971-1975??
@@ -81,7 +81,7 @@ def get_bulk_patent_data(year, week, output_file = None):
     df_store = []
     
     df_store.append(convert_txt_to_df(dates_df_txt, output_file = output_file))
-    # df_store.append(convert_xml1_to_df(dates_df_xml1, output_file = output_file)) # placeholder
-    # df_store.append(convert_xml2_to_df(dates_df_xml2, output_file = output_file)) # placeholder
+    df_store.append(convert_xml1_to_df(dates_df_xml1, output_file = output_file))
+    df_store.append(convert_xml2_to_df(dates_df_xml2, output_file = output_file))
 
     return pd.concat(df_store) if output_file is None else True
