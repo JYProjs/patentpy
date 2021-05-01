@@ -35,7 +35,7 @@ Bulk patent data in TXT or XML format (1976+) can be downloaded using the year a
 
 ```python
 # import get_bulk_patent_data functionality
-from patentpy.python.acquire import get_bulk_patent_data
+from patentpy.acquire import get_bulk_patent_data
 
 
 # download patents from the first week of 1976 and get data frame
