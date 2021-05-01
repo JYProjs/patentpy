@@ -1,11 +1,10 @@
 # update documentation
-
 import sys, traceback, datetime
 import urllib.request, shutil, zipfile
 from os import remove
-from pandas import concat
 from lxml import etree
 from io import BytesIO
+import pandas as pd
 
 from patentpy.utility import get_date_tues
 
@@ -110,8 +109,8 @@ def convert_xml1_to_df(dates_df, output_file = None):
         output_file (str, default None): path of '.csv' file to store data. 
     
     Returns:
-        Dataframe or bool: returns ``pandas.DataFrame`` object if ouput_file is ``None``, 
-        else returns boolean ``True``
+        Dataframe or bool: returns ``pandas.DataFrame`` object if ouput_file is ``None`` and at least one file's
+        data is able to be parsed else returns ``None``
 
     Raises:
         ValueError: 
@@ -135,7 +134,7 @@ def convert_xml1_to_df(dates_df, output_file = None):
     dest_file = "temp-output.zip"
     
     # list to store data frames
-    df_store = []
+    df_store = [None]       # to allow concat with only 1 df
     
     # default txt_to_df values
     header = True
@@ -149,7 +148,7 @@ def convert_xml1_to_df(dates_df, output_file = None):
             with open(output_file, 'w+') as f:
                 f.write("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n")
         else:
-            f.close()        # close file if exists?
+            f.close()        # close file if exists
         finally:
             header = False
             append = True
@@ -171,21 +170,42 @@ def convert_xml1_to_df(dates_df, output_file = None):
         curr_file += ".xml"
         
         # try to download data with complete file name
-        # add error handling to skip url error, delete temp files, etc.
         # make more modular - wrap in function, call in try block,
         with urllib.request.urlopen(curr_url) as res, open(dest_file, 'w+b') as out_file:
             shutil.copyfileobj(res, out_file)
-        # uncompress
-        with zipfile.ZipFile(dest_file, 'r') as zip_uspto:
-            zip_uspto.extract(curr_file)
+
+        # uncompress (try both formats)
+        try:
+            with zipfile.ZipFile(dest_file, 'r') as zip_uspto:
+                zip_uspto.extract('./' + curr_file)
+        except Exception as e:
+            try:
+                with zipfile.ZipFile(dest_file, 'r') as zip_uspto:
+                    zip_uspto.extract('./' + curr_file[:-4] + '.XML')
+            except:
+                # delete zip before next iteration; skip this year's week's data
+                exc_type, exc_value, exc_traceback = sys.exc_info()
+                traceback.print_exception(exc_type, exc_value, e.__traceback__, limit=1)
+                remove(dest_file)       
+                continue
+        
         # delete zip
         remove(dest_file)
-        
+
         # temperary output file to hold csv if no output file specified
         temp_output_file = "temp-patent-package-output.csv"
         
         # convert to xml1 data to csv format
-        xml1_to_df(curr_file, output_file if output_file is not None else temp_output_file, append, header)
+        try:
+            xml1_to_df(curr_file, output_file if output_file is not None else temp_output_file, append, header)
+        except Exception as e:
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            traceback.print_exception(exc_type, exc_value, e.__traceback__, limit=1)
+            # remove xml before next iteration, skip this year's week's data if unable to read
+            remove(curr_file)
+            continue
+
+        # delete xml
         remove(curr_file)
         
         # get df for that year, week if no output file specified
@@ -195,7 +215,7 @@ def convert_xml1_to_df(dates_df, output_file = None):
                 df_store.append(curr_df)
             finally:
                 remove(temp_output_file)
-            
-    return concat(df_store) if output_file is None else True
+
+    return pd.concat(df_store, ignore_index=True) if len(df_store) > 1 and output_file is None else None
 
 

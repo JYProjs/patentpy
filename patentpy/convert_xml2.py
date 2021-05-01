@@ -1,11 +1,10 @@
 # test with multiple years, weeks data v4+
-# error printing
 import sys, traceback, datetime
 import urllib.request, shutil, zipfile
 from os import remove
-from pandas import concat
 from lxml import etree
 from io import BytesIO
+import pandas as pd
 
 from patentpy.utility import get_date_tues
 
@@ -57,7 +56,7 @@ def extractFields2(parsed):
         for i in range(len(icl_class)):
             icl_components = [icl_class[i].find(".//section"), icl_class[i].find(".//class"), 
                               icl_class[i].find(".//subclass"), icl_class[i].find(".//main-group"),
-                              icl_class[i].find(".//main-group")]
+                              icl_class[i].find(".//subgroup")]
             icl_class[i] = "{}{}{} {}{}".format(*[j.text if j is not None else "" for j in icl_components])
     icl_class = ";".join(icl_class) if icl_class else ""
 
@@ -135,8 +134,8 @@ def convert_xml2_to_df(dates_df, output_file = None):
         output_file (str, default None): path of '.csv' file to store data. 
     
     Returns:
-        Dataframe or bool: returns ``pandas.DataFrame`` object if ouput_file is ``None``, 
-        else returns boolean ``True``
+        Dataframe or bool: returns ``pandas.DataFrame`` object if ouput_file is ``None`` and at least one file's
+        data is able to be parsed else returns ``None``
 
     Raises:
         ValueError: 
@@ -160,7 +159,7 @@ def convert_xml2_to_df(dates_df, output_file = None):
     dest_file = "temp-output.zip"
     
     # list to store data frames
-    df_store = []
+    df_store = [None]       # to allow concat with only 1 df
     
     # default txt_to_df values
     header = True
@@ -196,15 +195,16 @@ def convert_xml2_to_df(dates_df, output_file = None):
         curr_file += ".xml"
         
         # try to download data with complete file name
-        # add error handling to skip url error, delete temp files, etc.
         # make more modular - wrap in function, call in try block,
         with urllib.request.urlopen(curr_url) as res, open(dest_file, 'w+b') as out_file:
             shutil.copyfileobj(res, out_file)
         # uncompress
-        with zipfile.ZipFile(dest_file, 'r') as zip_uspto:
-            zip_uspto.extract(curr_file)
-        # delete zip
-        remove(dest_file)
+        try:
+            with zipfile.ZipFile(dest_file, 'r') as zip_uspto:
+                zip_uspto.extract(curr_file)
+        finally:
+            # delete zip
+            remove(dest_file)
         
         # temperary output file to hold csv if no output file specified
         temp_output_file = "temp-patent-package-output.csv"
@@ -220,7 +220,7 @@ def convert_xml2_to_df(dates_df, output_file = None):
                 df_store.append(curr_df)
             finally:
                 remove(temp_output_file)
-            
-    return concat(df_store) if output_file is None else True
+
+    return pd.concat(df_store, ignore_index=True) if len(df_store) > 1 and output_file is None else None
 
 

@@ -80,10 +80,16 @@ def get_bulk_patent_data(year, week, output_file = None):
     dates_df_xml2 = dates_df[dates_df['year'] >= 2005]
     
     # combine if no output file(return df)
-    df_store = []
-    
-    df_store.append(convert_txt_to_df(dates_df_txt, output_file = output_file))
-    df_store.append(convert_xml1_to_df(dates_df_xml1, output_file = output_file))
-    df_store.append(convert_xml2_to_df(dates_df_xml2, output_file = output_file))
+    df_store = [None]       # to allow concat with only 1 df
+    if not dates_df_txt.empty:
+        df_store.append(convert_txt_to_df(dates_df_txt, output_file = output_file))
+    if not dates_df_xml1.empty:
+        df_store.append(convert_xml1_to_df(dates_df_xml1, output_file = output_file))
+    if not dates_df_xml2.empty:
+        df_store.append(convert_xml2_to_df(dates_df_xml2, output_file = output_file))
 
-    return pd.concat(df_store) if output_file is None else True
+    # raise exception if unable to get/convert data
+    if not filter(None, df_store) and output_file is None:
+        raise Exception("Unable to convert uspto bulk data to dataframe/csv format")
+
+    return pd.concat(df_store, ignore_index=True) if output_file is None else True

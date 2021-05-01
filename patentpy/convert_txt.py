@@ -22,8 +22,8 @@ def convert_txt_to_df(dates_df, output_file = None):
         output_file (str, default None): path of '.csv' file to store data. 
     
     Returns:
-        Dataframe or bool: returns ``pandas.DataFrame`` object if ouput_file is ``None``, 
-        else returns boolean ``True``
+        Dataframe or bool: returns ``pandas.DataFrame`` object if ouput_file is ``None`` and at least one file's
+        data is able to be parsed else returns ``None``
 
     Raises:
         ValueError: 
@@ -47,7 +47,7 @@ def convert_txt_to_df(dates_df, output_file = None):
     dest_file = "temp-output.zip"
     
     # list to store data frames
-    df_store = []
+    df_store = [None]       # to allow concat with only 1 df
     
     # default txt_to_df values
     header = True
@@ -59,7 +59,7 @@ def convert_txt_to_df(dates_df, output_file = None):
             f = open(output_file)
         except FileNotFoundError:        # no file exists, create file and write header
             with open(output_file, 'w+') as f:
-                f.write("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n")
+                f.write("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References,Claims\n")
         else:
             f.close()        # close file if exists?
         finally:
@@ -108,4 +108,4 @@ def convert_txt_to_df(dates_df, output_file = None):
             finally:
                 remove(temp_output_file)
             
-    return pd.concat(df_store) if output_file is None else True
+    return pd.concat(df_store, ignore_index=True) if len(df_store) > 1 and output_file is None else None

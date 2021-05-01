@@ -8,7 +8,7 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(convert_funcs, m) {
     m.doc() = R"pbdoc(Plugin to convert USPTO bulk patent data (from 1976 - present) to CSV from 
-    TXT, XML1, and XML2 (original format types).
+    TXT (original format).
     )pbdoc";
 
     m.def("txt_to_df", &txt_to_df_cpp, R"pbdoc(
