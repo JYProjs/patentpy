@@ -181,7 +181,8 @@ def convert_xml1_to_df(dates_df, output_file = None):
         except Exception as e:
             try:
                 with zipfile.ZipFile(dest_file, 'r') as zip_uspto:
-                    zip_uspto.extract('./' + curr_file[:-4] + '.XML')
+                    curr_file = curr_file[:-4] + '.XML'
+                    zip_uspto.extract('./' + curr_file)
             except:
                 # if unable to extract:
                 # delete zip before next iteration; skip this year's week's data
@@ -205,10 +206,7 @@ def convert_xml1_to_df(dates_df, output_file = None):
             continue
         finally:
             # remove xml before next iteration, skip this year's week's data if unable to read
-            try:
-                remove(curr_file)
-            except:
-                remove(curr_file[:-4] + '.XML')
+            remove(curr_file)
         
         # get df for that year, week if no output file specified
         if output_file is None:
