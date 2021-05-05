@@ -205,7 +205,10 @@ def convert_xml1_to_df(dates_df, output_file = None):
             continue
         finally:
             # remove xml before next iteration, skip this year's week's data if unable to read
-            remove(curr_file)
+            try:
+                remove(curr_file)
+            except:
+                remove(curr_file[:-4] + '.XML')
         
         # get df for that year, week if no output file specified
         if output_file is None:
