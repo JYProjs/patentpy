@@ -10,7 +10,7 @@ from patentpy.acquire import get_bulk_patent_data
 def test_get_bulk_patent_data():
     # run func  x2 and see if csv formatted version == df version
     df = get_bulk_patent_data([i for i in range (2001, 2006, 2)], [1 for i in range(0, 3)])
-    get_bulk_patent_data([i for i in range (2001, 2006, 2)], [1 for i in range(0, 3)], 1, "test.csv")
+    get_bulk_patent_data([i for i in range (2001, 2006, 2)], [1 for i in range(0, 3)], "test.csv")
     df_from_csv = pandas.read_csv("test.csv")
     remove("test.csv")
     assert (df_from_csv.equals(df), df.iloc[9521, 0], df.iloc[0, 0]) == (True, '06839901', 'D04357132')
