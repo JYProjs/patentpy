@@ -20,4 +20,4 @@ script:
   - python -m pytest --cov=. tests-python/
 
 after_success:
-  - codecov
+  - codecov       # upload to codecov
