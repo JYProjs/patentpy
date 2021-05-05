@@ -52,17 +52,17 @@ get_bulk_patent_data(year = [1980]*5, week = range(49,54), output_file = "patent
 
 ### Data collected for each patent
 
-* patent title
+* unique identifier (patent number - WKU)
 * application date
 * patent issue date
-* text in patent abstract
+* patent title
 * inventor name(s)
 * assignee name(s)
 * ICL classification (IPC or Locarno)
-* unique identifier (AKA patent number)
 * referenced patent numbers
+* claims
 
-### Documentation
+### API Documentation
 https://jyprojs.github.io/patentpy/index.html
 
 ## Contribute

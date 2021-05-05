@@ -9,11 +9,16 @@ from patentpy.acquire import get_bulk_patent_data
 # test generic; should return true and create/append to csv file.
 def test_get_bulk_patent_data():
     # run func  x2 and see if csv formatted version == df version
-    df = get_bulk_patent_data(1991, 1)
-    get_bulk_patent_data(1991, 1, "test.csv")
+    df = get_bulk_patent_data([i for i in range (2001, 2006, 2)], [1 for i in range(0, 3)])
+    get_bulk_patent_data([i for i in range (2001, 2006, 2)], [1 for i in range(0, 3)], 1, "test.csv")
     df_from_csv = pandas.read_csv("test.csv")
     remove("test.csv")
-    assert df_from_csv.equals(df)
+    assert (df_from_csv.equals(df), df.iloc[9521, 0], df.iloc[0, 0]) == (True, '06839901', 'D04357132')
+
+# test Exception -- no uspto bulk data able to be converted
+def test_gbpd_no_data_returned():
+    with pytest.raises(Exception, match= r"bulk"):
+        get_bulk_patent_data([i for i in range (2001, 2006, 2)], [53 for i in range(0, 3)])
 
 # test TypeError -- `years` & `weeks` not ints
 def test_gbpd_not_ints():
@@ -58,6 +63,8 @@ def test_gdt_no_53rd_wk():
 
 
 ### TEST_CONVERT_TXT_TO_DF ###
+# make convert functions more modular to test download zip, getting url, etc separately
+# and make into one utility function
 # test convert_txt_to_df with valid input
 def test_convert_txt_to_df():
     # create test_df of dates, run func x2 and see if csv formatted version == df version
@@ -79,8 +86,3 @@ def test_cttd_not_CSV():
     test_df = pandas.DataFrame(data=[[1991,1]], columns=['year', 'week'])
     with pytest.raises(ValueError, match= r".*.csv.*"):
         convert_txt_to_df(test_df, "test.txt")
-
-
-
-# should make convert_txt_to_df more modular to test download zip, getting url, etc separately.
-# and add try and exceptions as necessary in convert_txt.py

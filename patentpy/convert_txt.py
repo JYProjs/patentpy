@@ -87,18 +87,31 @@ def convert_txt_to_df(dates_df, output_file = None):
         # make more modular - wrap in function, call in try block,
         with urllib.request.urlopen(curr_url) as res, open(dest_file, 'w+b') as out_file:
             shutil.copyfileobj(res, out_file)
+            
         # uncompress
-        with zipfile.ZipFile(dest_file, 'r') as zip_uspto:
-            zip_uspto.extract(curr_file)
-        # delete zip
-        remove(dest_file)
+        try:
+            with zipfile.ZipFile(dest_file, 'r') as zip_uspto:
+                zip_uspto.extract(curr_file)
+        except Exception as e:
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            traceback.print_exception(exc_type, exc_value, e.__traceback__, limit=1)
+            continue
+        finally:
+            # delete zip
+            remove(dest_file)
         
         # temperary output file to hold csv if no output file specified
         temp_output_file = "temp-patent-package-output.csv"
         
         # convert to txt data to csv format
-        txt_to_df(curr_file, output_file if output_file is not None else temp_output_file, append, header)
-        remove(curr_file)
+        try:
+            txt_to_df(curr_file, output_file if output_file is not None else temp_output_file, append, header)
+        except Exception as e:
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            traceback.print_exception(exc_type, exc_value, e.__traceback__, limit=1)
+            continue
+        finally:
+            remove(curr_file)
         
         # get df for that year, week if no output file specified
         if output_file is None:

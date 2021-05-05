@@ -202,6 +202,10 @@ def convert_xml2_to_df(dates_df, output_file = None):
         try:
             with zipfile.ZipFile(dest_file, 'r') as zip_uspto:
                 zip_uspto.extract(curr_file)
+        except Exception as e:
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            traceback.print_exception(exc_type, exc_value, e.__traceback__, limit=1)
+            continue
         finally:
             # delete zip
             remove(dest_file)
@@ -210,8 +214,15 @@ def convert_xml2_to_df(dates_df, output_file = None):
         temp_output_file = "temp-patent-package-output.csv"
         
         # convert to xml1 data to csv format
-        xml2_to_df(curr_file, output_file if output_file is not None else temp_output_file, append, header)
-        remove(curr_file)
+        try:
+            xml2_to_df(curr_file, output_file if output_file is not None else temp_output_file, append, header)
+        except Exception as e:
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            traceback.print_exception(exc_type, exc_value, e.__traceback__, limit=1)
+            continue
+        finally:
+            # remove xml before next iteration, skip this year's week's data if unable to read
+            remove(curr_file)
         
         # get df for that year, week if no output file specified
         if output_file is None:

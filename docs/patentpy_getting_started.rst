@@ -61,12 +61,12 @@ Functionality
 Data collected for each patent
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* patent title
+* unique identifier (patent number - WKU)
 * application date
 * patent issue date
-* text in patent abstract
+* patent title
 * inventor name(s)
 * assignee name(s)
-* ICL classification
-* unique identifier (AKA patent number)
+* ICL classification (IPC or Locarno)
 * referenced patent numbers
+* claims

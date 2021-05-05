@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>General Functions &mdash; patentpy 0.1.0 documentation</title>
+  <title>General Functions &mdash; patentpy 0.1.1 documentation</title>
   
 
   
@@ -92,8 +92,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">General Functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#module-patentpy.acquire">patentpy.acquire</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-patentpy.convert_txt">patentpy.convert_txt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-patentpy.convert_xml1">patentpy.convert_xml1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-patentpy.convert_xml2">patentpy.convert_xml2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-patentpy.utility">patentpy.utility</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-patentpy">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="convert_funcs.html">External C++ plugin</a></li>
@@ -177,7 +178,7 @@
 <span id="patentpy-acquire"></span><h2>patentpy.acquire<a class="headerlink" href="#module-patentpy.acquire" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="patentpy.acquire.get_bulk_patent_data">
-<code class="sig-prename descclassname">patentpy.acquire.</code><code class="sig-name descname">get_bulk_patent_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">year</span></em>, <em class="sig-param"><span class="n">week</span></em>, <em class="sig-param"><span class="n">output_file</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.acquire.get_bulk_patent_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">patentpy.acquire.</span></code><code class="sig-name descname"><span class="pre">get_bulk_patent_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">week</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.acquire.get_bulk_patent_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Obtains USPTO data in csv or dataframe from user-inputted values, <cite>year</cite> and <cite>week</cite>.</p>
 <p>User-friendly function that utilizes <cite>convert_txt_to_df</cite> helper function after error
 checking user-inputted <cite>year</cite> and <cite>week</cite> values (May either both be integer values or
@@ -217,7 +218,7 @@ else returns boolean <code class="docutils literal notranslate"><span class="pre
 <span id="patentpy-convert-txt"></span><h2>patentpy.convert_txt<a class="headerlink" href="#module-patentpy.convert_txt" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="patentpy.convert_txt.convert_txt_to_df">
-<code class="sig-prename descclassname">patentpy.convert_txt.</code><code class="sig-name descname">convert_txt_to_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dates_df</span></em>, <em class="sig-param"><span class="n">output_file</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.convert_txt.convert_txt_to_df" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">patentpy.convert_txt.</span></code><code class="sig-name descname"><span class="pre">convert_txt_to_df</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.convert_txt.convert_txt_to_df" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts multiple TXT files to CSV format or a dataframe.</p>
 <p>Iterates through each row in dates_df DataFrame and downloads zip file from United States Patent
 Trademark Office (USPTO) url corresponding to patent data from that row’s ‘year’ and ‘week’.
@@ -233,8 +234,8 @@ temporary files are cleaned up).</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Dataframe or bool</em> – returns <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> object if ouput_file is <code class="docutils literal notranslate"><span class="pre">None</span></code>,
-else returns boolean <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<dd class="field-even"><p><em>Dataframe or bool</em> – returns <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> object if ouput_file is <code class="docutils literal notranslate"><span class="pre">None</span></code> and at least one file’s
+data is able to be parsed else returns <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><p><strong>ValueError</strong> – if <cite>dates_df</cite> does not contain columns 1) ‘year’ or 2) ‘week’ or if <cite>output_file</cite> is not a
@@ -244,11 +245,91 @@ else returns boolean <code class="docutils literal notranslate"><span class="pre
 </dd></dl>
 
 </div>
+<div class="section" id="module-patentpy.convert_xml1">
+<span id="patentpy-convert-xml1"></span><h2>patentpy.convert_xml1<a class="headerlink" href="#module-patentpy.convert_xml1" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="patentpy.convert_xml1.convert_xml1_to_df">
+<code class="sig-prename descclassname"><span class="pre">patentpy.convert_xml1.</span></code><code class="sig-name descname"><span class="pre">convert_xml1_to_df</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.convert_xml1.convert_xml1_to_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts multiple XML files (2002-2004, XML version 2.5) to CSV format or a dataframe.</p>
+<p>Iterates through each row in dates_df DataFrame and downloads zip file from United States Patent
+Trademark Office (USPTO) url corresponding to patent data from that row’s ‘year’ and ‘week’.
+Extracts each zip folder (containing a XML file) and parses files (extracting fields and
+converting to csv file format). If no output file is provided, a temporary csv file is created,
+read into pandas dataframe and returned (zip, xml, and any temporary files are cleaned up).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date_df</strong> (<em>DataFrame</em>) – dataframe with columns: 1) ‘year’ and 2) ‘week’.</p></li>
+<li><p><strong>output_file</strong> (<em>str</em><em>, </em><em>default None</em>) – path of ‘.csv’ file to store data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>Dataframe or bool</em> – returns <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> object if ouput_file is <code class="docutils literal notranslate"><span class="pre">None</span></code> and at least one file’s
+data is able to be parsed else returns <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if <cite>dates_df</cite> does not contain columns 1) ‘year’ or 2) ‘week’ or if <cite>output_file</cite> is not a
+    ‘.csv’ file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="patentpy.convert_xml1.extractFields1">
+<code class="sig-prename descclassname"><span class="pre">patentpy.convert_xml1.</span></code><code class="sig-name descname"><span class="pre">extractFields1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parsed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.convert_xml1.extractFields1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="patentpy.convert_xml1.xml1_to_df">
+<code class="sig-prename descclassname"><span class="pre">patentpy.convert_xml1.</span></code><code class="sig-name descname"><span class="pre">xml1_to_df</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.convert_xml1.xml1_to_df" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-patentpy.convert_xml2">
+<span id="patentpy-convert-xml2"></span><h2>patentpy.convert_xml2<a class="headerlink" href="#module-patentpy.convert_xml2" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="patentpy.convert_xml2.convert_xml2_to_df">
+<code class="sig-prename descclassname"><span class="pre">patentpy.convert_xml2.</span></code><code class="sig-name descname"><span class="pre">convert_xml2_to_df</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.convert_xml2.convert_xml2_to_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts multiple XML (version 4+) files to CSV format or dataframe.</p>
+<p>Iterates through each row in dates_df DataFrame and downloads zip file from United States Patent
+Trademark Office (USPTO) url corresponding to patent data from that row’s ‘year’ and ‘week’.
+Extracts each zip folder (containing a XML file) and parses files (extracting fields and
+converting to csv file format). If no output file is provided, a temporary csv file is created,
+read into pandas dataframe and returned (zip, xml, and any temporary files are cleaned up).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date_df</strong> (<em>DataFrame</em>) – dataframe with columns: 1) ‘year’ and 2) ‘week’.</p></li>
+<li><p><strong>output_file</strong> (<em>str</em><em>, </em><em>default None</em>) – path of ‘.csv’ file to store data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>Dataframe or bool</em> – returns <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> object if ouput_file is <code class="docutils literal notranslate"><span class="pre">None</span></code> and at least one file’s
+data is able to be parsed else returns <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if <cite>dates_df</cite> does not contain columns 1) ‘year’ or 2) ‘week’ or if <cite>output_file</cite> is not a
+    ‘.csv’ file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="patentpy.convert_xml2.extractFields2">
+<code class="sig-prename descclassname"><span class="pre">patentpy.convert_xml2.</span></code><code class="sig-name descname"><span class="pre">extractFields2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parsed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.convert_xml2.extractFields2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="patentpy.convert_xml2.xml2_to_df">
+<code class="sig-prename descclassname"><span class="pre">patentpy.convert_xml2.</span></code><code class="sig-name descname"><span class="pre">xml2_to_df</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.convert_xml2.xml2_to_df" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 <div class="section" id="module-patentpy.utility">
 <span id="patentpy-utility"></span><h2>patentpy.utility<a class="headerlink" href="#module-patentpy.utility" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="patentpy.utility.get_date_tues">
-<code class="sig-prename descclassname">patentpy.utility.</code><code class="sig-name descname">get_date_tues</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">year</span></em>, <em class="sig-param"><span class="n">week</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.utility.get_date_tues" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">patentpy.utility.</span></code><code class="sig-name descname"><span class="pre">get_date_tues</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">week</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#patentpy.utility.get_date_tues" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates Tuesday’s date for week <code class="docutils literal notranslate"><span class="pre">week</span></code> of year <code class="docutils literal notranslate"><span class="pre">year</span></code>.</p>
 <p>Helper function the USPTO patent grant date (Tuesdays) for a given <cite>week</cite> and <cite>year</cite> to aid in
 obtaining file name and url containing zip folder to download.</p>
@@ -271,9 +352,6 @@ obtaining file name and url containing zip folder to download.</p>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="module-patentpy">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-patentpy" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

@@ -3,8 +3,8 @@ Development
 
 Release Info
 ------------
-Current version 0.1.0 supports TXT conversions of USPTO bulk patent data (Full Text - no images) to csv and dataframe format.
-This includes patent data from January of 1976 to December of 2001. Support for XML1 and XML2 is anticipated in next release.
+Current version 0.1.1 supports both TXT and XML conversions of USPTO bulk patent data (Full Text - no images) to csv and dataframe format.
+This includes patent data from January of 1976 to present.
 
 
 Contribute
