@@ -7,11 +7,23 @@ from os import path
 
 import sys
 
-__version__ = "0.1.1"
+def read(rel_path):
+    with open(path.join(path.abspath(path.dirname(__file__)), rel_path), 'r') as f:
+        return f.read()
 
-curr_directory = path.abspath(path.dirname(__file__))
-with open(path.join(curr_directory, 'README.md'), encoding="utf-8") as f:
-    long_description = f.read()
+def get_version(rel_path):
+    for line in read(rel_path).splitlines():
+        if line.startswith('__version__'):
+            delim = '"' if '"' in line else "'"
+            return line.split(delim)[1]
+    else:
+        raise RuntimeError("Unable to find version string.")
+
+def get_long_desc(rel_path):
+    with open(path.join(path.abspath(path.dirname(__file__)), rel_path), 'r', encoding="utf-8") as f:
+        return f.read()
+
+__version__ = get_version("patentpy/__init__.py")
 
 ext_modules = [
     Pybind11Extension("convert_funcs",
@@ -21,20 +33,19 @@ ext_modules = [
         ),
 ]
 
-
 setup(
-    name="patentpy",
-    version=__version__,
-    author="James Yu, Raoul Wadhwa, Peter Erdi",
-    author_email="jyu140@jhu.edu",
-    description="A project taking USPTO bulk patent data and converting it to rectangular format using pybind11",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/JYProjs/patentpy",
+    name = "patentpy",
+    version = __version__,
+    author = "James Yu, Raoul Wadhwa, Peter Erdi",
+    author_email = "jyu140@jhu.edu",
+    description = "A project taking USPTO bulk patent data and converting it to rectangular format",
+    long_description = get_long_desc('README.md'),
+    long_description_content_type = "text/markdown",
+    url = "https://github.com/JYProjs/patentpy",
     packages = ["patentpy"],
-    ext_modules=ext_modules,
-    install_requires=["pandas", "lxml"],
-    classifiers= [
+    ext_modules = ext_modules,
+    install_requires = ["pandas", "lxml"],
+    classifiers = [
             "Programming Language :: Python :: 3",
             "Programming Language :: C++",
             "License :: OSI Approved :: MIT License",
@@ -45,7 +56,9 @@ setup(
             "Natural Language :: English",
             "Topic :: Utilities",
             "Topic :: Text Processing :: General",
+            "Topic :: Text Processing :: Markup :: XML",
             ],
-    zip_safe=False,
-    python_requires='>=3',
+    license = "MIT",
+    zip_safe = False,
+    python_requires = ">=3.5",
 )

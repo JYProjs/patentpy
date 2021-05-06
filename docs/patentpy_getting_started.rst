@@ -26,8 +26,7 @@ Installation
    # clone repository then run follow code from its parent directory
    pip install ./patentpy
 
-Note: This package uses pybind11 to wrap C++ code in python and requires python3. 
-Please see any pybind11 requirements for more specific details.
+Note: This package utilizes pybind11 to wrap a custom txt parser written in C++ code, lxml to parse xml files, and pandas for the option of presenting uspto bulk data as a dataframe.
 
 Sample code
 -----------
