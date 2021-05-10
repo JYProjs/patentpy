@@ -11,6 +11,7 @@
 [travis_url]:        https://travis-ci.com/JYProjs/patentpy
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://pepy.tech/badge/patentpy)](https://pepy.tech/project/patentpy)
 
 ## Overview
 
