@@ -1,6 +1,6 @@
 # test with multiple years, weeks data v4+
 import sys, traceback, datetime
-import urllib.request, shutil, zipfile
+import urllib.request, shutil, zipfile, re
 from os import remove
 from lxml import etree
 from io import BytesIO
@@ -199,16 +199,27 @@ def convert_xml2_to_df(dates_df, output_file = None):
         with urllib.request.urlopen(curr_url) as res, open(dest_file, 'w+b') as out_file:
             shutil.copyfileobj(res, out_file)
         # uncompress
-        try:
-            with zipfile.ZipFile(dest_file, 'r') as zip_uspto:
-                zip_uspto.extract(curr_file)
-        except Exception as e:
-            exc_type, exc_value, exc_traceback = sys.exc_info()
-            traceback.print_exception(exc_type, exc_value, e.__traceback__, limit=1)
-            continue
-        finally:
-            # delete zip
-            remove(dest_file)
+        # uncompress (regex to match inconsistent formats)
+        regexToMatch = re.compile(curr_file, re.IGNORECASE)
+        with zipfile.ZipFile(dest_file, 'r') as zip_uspto:
+            fileFound = False
+            for file in zip_uspto.infolist():
+                if regexToMatch.search(file.filename):
+                    zip_uspto.extract(file)
+                    curr_file = file.filename
+                    fileFound = True
+            if not fileFound:
+                try:
+                    raise FileNotFoundError("Unable to extract file {} for year {}, week {}".format(curr_file, curr_year, curr_week)) 
+                except FileNotFoundError as e:
+                    exc_type, exc_value, exc_traceback = sys.exc_info()
+                    traceback.print_exception(exc_type, exc_value, e.__traceback__, limit=1)
+                    continue
+                finally:
+                    remove(dest_file)
+
+        # delete zip
+        remove(dest_file)
         
         # temperary output file to hold csv if no output file specified
         temp_output_file = "temp-patent-package-output.csv"
