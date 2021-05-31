@@ -259,6 +259,7 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
         }
         else if (inPatent && inClaims && (startsWith(currLine, "PAR  ") ||
                                           startsWith(currLine, "PA1  ") ||
+                                          startsWith(currLine, "PAL  ") ||
                                           startsWith(currLine, "     ")))
         {
             // add claims text
