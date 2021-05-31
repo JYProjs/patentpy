@@ -3,14 +3,16 @@ Development
 
 Release Info
 ------------
-Current version 0.1.1 supports both TXT and XML conversions of USPTO bulk patent data (Full Text - no images) to csv and dataframe format.
+Current Version 0.1.2 fixes bug when unzipping zip file downloaded from USPTO bulk patent website due to incorrect filename/path
+
+Version >= 0.1.1 supports both TXT and XML conversions of USPTO bulk patent data (Full Text - no images) to csv and dataframe format.
 This includes patent data from January of 1976 to present.
 
 
 Contribute
 ----------
 
-To contribute to patentpy, you can create issues for any bugs/suggestions on the `issues page <https://github.com/JYProjs/patentpy/issues>`_.
+We welcome all feedback! To contribute to patentpy, you can create issues for any bugs/suggestions on the `issues page <https://github.com/JYProjs/patentpy/issues>`_.
 You can also fork the patentpy repository and create pull requests to add features you think will be useful for users.
 
 Citation
