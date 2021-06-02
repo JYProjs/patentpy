@@ -77,6 +77,6 @@ Text in boldface corresponds to column names in datasets returned by get_bulk_pa
 * Issue_Date: date the patent was filed.
 * Inventor: person(s) or organization(s) credited with inventing the patent.
 * Assignee: person(s) or organization(s) with an ownership interest in the patent.
-* ICL_Class: patent class based on the International Patent Classification (IPC) system. For more information, visit https://www.wipo.int/classifications/ipc/en.
+* ICL_Class: patent class based on the International Patent Classification (IPC) system or Locarno. For more information, visit https://www.wipo.int/classifications/ipc/en.
 * References: set of patents cited by this patent.
 * Claims: text field of claims regarding what should be protected by this patent.
