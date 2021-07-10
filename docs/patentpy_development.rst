@@ -20,5 +20,5 @@ You can also fork the patentpy repository and create pull requests to add featur
 Citation
 --------
 
-Yu J, Wadhwa RR, Milind Y. Desai, Jacob G. Scott, Erdi P. patentpy: Access USPTO Bulk Data in Rectangular Format. 2021; Python package version 0.1.0. URL https://github.com/JYProjs/patentpy.
+Yu J, Wadhwa RR, Beltz H, Milind Y. Desai, Jacob G. Scott, Erdi P. patentpy: Access USPTO Bulk Data in Rectangular Format. 2021; Python package version 0.1.0. URL https://github.com/JYProjs/patentpy.
 

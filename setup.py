@@ -36,7 +36,7 @@ ext_modules = [
 setup(
     name = "patentpy",
     version = __version__,
-    author = "James Yu, Raoul Wadhwa, Milind Y. Desai, Jacob G. Scott, Peter Erdi",
+    author = "James Yu, Raoul Wadhwa, Hayley Beltz, Milind Y. Desai, Jacob G. Scott, Peter Erdi",
     author_email = "jyu140@jhu.edu",
     description = "A project taking USPTO bulk patent data and converting it to rectangular format",
     long_description = get_long_desc('README.md'),

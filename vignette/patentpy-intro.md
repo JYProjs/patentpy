@@ -1,5 +1,5 @@
 # **Introduction to patentpy**
-#### **James Yu, Raoul R. Wadhwa, Milind Y. Desai, Jacob G. Scott, Péter Érdi**
+#### **James Yu, Raoul R. Wadhwa, Hayley Beltz, Milind Y. Desai, Jacob G. Scott, Péter Érdi**
 #### **30 May 2021**
 
 ## **Purpose**
