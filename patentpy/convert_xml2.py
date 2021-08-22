@@ -171,7 +171,7 @@ def convert_xml2_to_df(dates_df, output_file = None):
             f = open(output_file)
         except FileNotFoundError:        # no file exists, create file and write header
             with open(output_file, 'w+') as f:
-                f.write("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n")
+                f.write("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References,Claims\n")
         else:
             f.close()        # close file if exists?
         finally:
