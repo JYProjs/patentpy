@@ -123,7 +123,7 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
                 tempRef = "",
                 currClaims = "",
                 tempClaims = "";
-    
+                
     bool inPatent = false,
          gotAPD = false,
          gotISD = false,
@@ -142,8 +142,10 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
             {
                 // remove quotes from text claims field first to avoid CSV issues
                 removeQuotes(currClaims);
+                removeQuotes(inventor);
+                removeQuotes(assignee);
                 removeQuotes(title);
-                
+
                 fout << currID
                   << ",\"" << title
                   << "\"," << appDate
@@ -279,6 +281,8 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
 
     // output details of last patent
     removeQuotes(currClaims);
+    removeQuotes(inventor);
+    removeQuotes(assignee);
     removeQuotes(title);
     fout << currID
          << ",\"" << title
