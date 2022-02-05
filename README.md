@@ -45,7 +45,7 @@ patent_data = get_bulk_patent_data(year = 1976, week = 1)
 # and store in a CSV file named "patent-data.csv"
 # Note: uspto patent data is reported on Tuesdays and 1980
 # has 53 Tuesdays, hence, 53 weeks worth of data
-get_bulk_patent_data(year = [1980]*5, week = range(49,54), output_file = "patent-data.csv")
+get_bulk_patent_data(year = [1980]*5, week = [i for i in range(49,54)], output_file = "patent-data.csv")
 ```
 
 ## Functionality

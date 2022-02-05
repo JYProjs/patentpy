@@ -21,7 +21,21 @@ copyright = '2021, James Yu'
 author = 'James Yu'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.1'
+def read(rel_path):
+    root_dir = os.path.join(os.path.dirname(__file__), "..")
+    ver_file_path = os.path.join(os.path.abspath(root_dir), rel_path)
+    with open(ver_file_path, 'r') as f:
+        return f.read()
+        
+def get_version(rel_path):
+    for line in read(rel_path).splitlines():
+        if line.startswith('__version__'):
+            delim = '"' if '"' in line else "'"
+            return line.split(delim)[1]
+    else:
+        raise RuntimeError("Unable to find version string.")
+
+release = get_version("patentpy/__init__.py")
 
 
 # -- General configuration ---------------------------------------------------
@@ -46,7 +60,7 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'setup.py', 'tests-python']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'setup.py', 'tests-python', '.circleci', 'dist', 'patentpy.egg-info']
 
 
 # -- Options for HTML output -------------------------------------------------

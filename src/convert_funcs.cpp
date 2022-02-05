@@ -147,15 +147,15 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
                 removeQuotes(title);
 
                 fout << currID
-                  << ",\"" << title
-                  << "\"," << appDate
-                  << "," << issDate
-                  << ",\"" << inventor
-                  << "\",\"" << assignee
-                  << "\"," << iclClass
-                  << "," << refs
-                  << ",\"" << currClaims
-                  << "\"\n";
+                     << ",\"" << title
+                     << "\"," << appDate
+                     << "," << issDate
+                     << ",\"" << inventor
+                     << "\",\"" << assignee
+                     << "\",\"" << iclClass
+                     << "\",\"" << refs
+                     << "\",\"" << currClaims
+                     << "\"\n";
             }
             else inPatent = true;
 
@@ -290,9 +290,9 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
          << "," << issDate
          << ",\"" << inventor
          << "\",\"" << assignee
-         << "\"," << iclClass
-         << "," << refs
-         << ",\"" << currClaims
+         << "\",\"" << iclClass
+         << "\",\"" << refs
+         << "\",\"" << currClaims
          << "\"\n";
 
     // close IO
