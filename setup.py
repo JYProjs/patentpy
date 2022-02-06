@@ -44,7 +44,7 @@ setup(
     url = "https://github.com/JYProjs/patentpy",
     packages = ["patentpy"],
     ext_modules = ext_modules,
-    install_requires = ["pandas", "lxml"],
+    install_requires = ["pandas", "lxml", "tqdm"],
     classifiers = [
             "Programming Language :: Python :: 3",
             "Programming Language :: C++",
@@ -60,5 +60,5 @@ setup(
             ],
     license = "MIT",
     zip_safe = False,
-    python_requires = ">=3.5",
+    python_requires = ">=3.7",
 )

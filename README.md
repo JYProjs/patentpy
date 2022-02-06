@@ -2,13 +2,18 @@
 
 |       CI          | status  |
 |-------------------|---------|
-| Linux Travis      | [![Build Status][travis_badge]][travis_url] |
-| code coverage     | [![codecov][codecov_badge]][codecov_url]  |
+| Docker  CircleCI  | [![Build Status][circleci_badge]][circleci_url] |
+| Code coverage     | [![codecov][codecov_badge]][codecov_url]  |
 
 [codecov_badge]:     https://codecov.io/gh/JYProjs/patentpy/branch/main/graph/badge.svg?token=OZWS94028B
 [codecov_url]:       https://codecov.io/gh/JYProjs/patentpy
-[travis_badge]:      https://travis-ci.com/JYProjs/patentpy.svg?branch=main
-[travis_url]:        https://travis-ci.com/JYProjs/patentpy
+[circleci_badge]:    https://circleci.com/gh/JYProjs/patentpy.svg?style=svg
+[circleci_url]:      https://circleci.com/gh/JYProjs/patentpy
+
+
+[//]: #  ([travis_badge]:      https://travis-ci.com/JYProjs/patentpy.svg?branch=main)
+[//]: #  ([travis_url]:        https://travis-ci.com/JYProjs/patentpy)
+
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](https://pepy.tech/badge/patentpy)](https://pepy.tech/project/patentpy)

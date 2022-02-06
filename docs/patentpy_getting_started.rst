@@ -46,19 +46,18 @@ Bulk patent data in TXT format (1976-2001) can be downloaded using the year and 
    # and store in a CSV file named "patent-data.csv"
    # Note: uspto patent data is reported on Tuesdays and 1980
    # has 53 Tuesdays, hence, 53 weeks worth of data
-   get_bulk_patent_data(year = [1980]*5, week = range(49,54), output_file = "patent-data.csv")
+   get_bulk_patent_data(year = [1980]*5, week = [i for i in range(49,54)], output_file = "patent-data.csv")
 
 Specific documentation of ``get_bulk_patent_data`` 's use can be found under "General Functions".
 
-It is recommended to use ``get_bulk_patent_data`` (which calls ``convert_txt_to_df``) rather than 
-calling ``convert_txt_to_df`` directly as the former better handles invalid arguments. 
-Please carefully read the documentation if using ``convert_txt_to_df`` directly.
+It is recommended to use ``get_bulk_patent_data`` (which calls ``convert_to_df``) rather than 
+calling ``convert_to_df`` directly as the former better handles invalid arguments. 
+Please carefully read the documentation for use.
 
 Functionality
 -------------
 
-Data collected for each patent
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Data collected for each patent:
 
 * unique identifier (patent number - WKU)
 * application date

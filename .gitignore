@@ -3,7 +3,7 @@
 *.txt
 *.csv
 *.xml
-*.coverage
+*.coverage*
 *.so
 
 
