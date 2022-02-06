@@ -74,7 +74,6 @@ def get_file_name(year, week):
         file_name = "pg{:02d}{:02d}{:02d}".format(year-2000, month, day)  + ".xml"
     else:
         file_name = "ipg{:02d}{:02d}{:02d}".format(year-2000, month, day) + ".xml"
-    
     return file_name
 
 def download_zip(url, zip_name):
@@ -84,15 +83,13 @@ def download_zip(url, zip_name):
 
 def uncompress_zip(file_name, zip_name):
     """Helper function used to uncompress zip file downloaded in from uspto url link. 
-    
-    Uses  
-    
+        
     Args: 
         zip_file (str): name of zip file from which file containing uspto bulk patent data will be extracted
         file_name (str): expected file name of in XML or TXT document containing uspto bulk patent data.
     
     Returns:
-        String: returns filename of output file if completed successfully else False
+        string: returns filename of output file if completed successfully else False
 
     Raises:
         FileNotFoundError: 

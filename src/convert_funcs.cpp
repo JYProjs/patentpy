@@ -12,31 +12,38 @@ bool startsWith(const std::string &text, const std::string &prefix)
     return (text.find(prefix) == 0);
 }
 
+// remove bad chars, 0x9b for now
+void replaceBadChars(std::string &text) 
+{
+    std::replace(text.begin(), text.end(), '\x9b', '!');
+}
+
 // remove whitespace from beginning of a string
 // WORKS (basic test cases)
-void stripBeginWhitespace(std::string &text)
+int findBeginWhitespace(std::string &text)
 {
     int start = 0;
     while (text[start] == ' ' || text[start] == '\n' || text[start] == '\t' || text[start] == '\r')
         start++;
-    text = text.substr(start);
+    return start;
 }
 
 // remove whitespace from end of a string
 // WORKS (basic test cases)
-void stripEndWhitespace(std::string &text)
+int findEndWhitespace(std::string &text)
 {
     int end = text.length();
     while (text[end - 1] == ' ' || text[end - 1] == '\n' || text[end - 1] == '\t' || text[end - 1] == '\r')
       end--;
-    text = text.substr(0, end);
+    return end;
 }
 
 // remove whitespace from beginning and end
 void stripEdgeWhitespace(std::string &text)
 {
-    stripBeginWhitespace(text);
-    stripEndWhitespace(text);
+    int start = findBeginWhitespace(text);
+    int end = findEndWhitespace(text);
+    text = text.substr(start, end);
 }
 
 // extract single-line field and strip whitespace
@@ -145,6 +152,7 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
                 removeQuotes(inventor);
                 removeQuotes(assignee);
                 removeQuotes(title);
+                replaceBadChars(title);
 
                 fout << currID
                      << ",\"" << title
@@ -253,6 +261,7 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
         {
             tempClaims = extractField(currLine, 5);
             stripEdgeWhitespace(tempClaims);
+            replaceBadChars(tempClaims);
             currClaims = tempClaims;
         }
         else if (inPatent && inClaims && startsWith(currLine, "NUM "))
@@ -267,7 +276,8 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
             // add claims text
             tempClaims = extractField(currLine, 5);
             stripEdgeWhitespace(tempClaims);
-            currClaims += tempClaims;
+            replaceBadChars(tempClaims);
+            currClaims += " " + tempClaims;
         }
         else
         {
@@ -284,6 +294,7 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
     removeQuotes(inventor);
     removeQuotes(assignee);
     removeQuotes(title);
+    replaceBadChars(title);
     fout << currID
          << ",\"" << title
          << "\"," << appDate

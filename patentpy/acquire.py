@@ -32,12 +32,10 @@ def get_bulk_patent_data(year, week, output_file = None):
         TypeError:
             * ``year`` or ``week`` are not both integers or lists of integers
         ValueError: 
-            * ``year`` or ``week`` contain missing values or contain invalid values 
-            (i.e. week > 53, year < 1776)
-            * ``year`` or ``week`` are unequal length lists. 
-            * `dates_df` does not contain columns 1) 'year' or 2) 'week' 
-            * if `output_file` is not a '.csv' file.
-
+            * if ``year`` or ``week`` contain missing values or contain invalid values 
+            (i.e. week > 53, year < 1776), ``year`` or ``week`` are unequal length lists, or 
+            if `output_file` is not a '.csv' file.
+            \n
             **Note**: An "error" will be raised if there is no patent data available for week 53  
             for a specific year or if dates are in the future for the current year, 
             however these entries will be skipped without halting execution.
@@ -90,7 +88,7 @@ def convert_to_df(dates_df, output_file = None):
     Temporary files (zip, xml, etc.) are cleaned up.
     
     Args: 
-        date_df (DataFrame): dataframe with columns: 1) 'year' and 2) 'week'. Values must all be integers. 
+        date_df (DataFrame): dataframe with columns: (1) 'year' and (2) 'week'. Values must all be integers. 
         output_file (str, default None): path of '.csv' file to store data. 
 
         **Note**: This function omits error checking for values / types in dataframe argument as its intended use
@@ -103,8 +101,7 @@ def convert_to_df(dates_df, output_file = None):
 
     Raises:
         ValueError: 
-            * `dates_df` does not contain columns 1) 'year' or 2) 'week' 
-            * `output_file` is not end with '.csv'.
+            -  `dates_df` does not contain columns 1) 'year' or 2) 'week' or `output_file` is not end with '.csv'.
     """
     # check format of df; internal function so should not occur
     if not ('year' == dates_df.columns[0] and 'week' == dates_df.columns[1]):

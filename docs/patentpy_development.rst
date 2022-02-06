@@ -3,9 +3,11 @@ Development
 
 Release Info
 ------------
-Current Version 0.1.2 bug fixes:
- * bug when unzipping zip file downloaded from USPTO bulk patent website due to incorrect filename/path
- * bug where claim data is missing from being located under a different tag
+Current Version 0.2.0 changes:
+ * refactored code for better maintainability
+ * fixed bug where inappropriately coded chars in XML1 (2000-2002) files threw lxml parsing errors (bad characters replaced by � symbol)
+ * fixed bug where TXT (1976-2001) claims text incorporated char \'\\x9b\' (replaced with '!' to match ending '!', possibly control for brackets based on manual confirmation with uspto patent search results)
+ * fixed spacing in TXT claims text
 
 Version >= 0.1.1 supports both TXT and XML conversions of USPTO bulk patent data (Full Text - no images) to csv and dataframe format.
 This includes patent data from January of 1976 to present.

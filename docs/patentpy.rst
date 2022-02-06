@@ -10,15 +10,6 @@ patentpy.acquire
    :show-inheritance:
 
 
-patentpy.convert\_txt
----------------------
-
-.. automodule:: patentpy.convert_txt
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
 patentpy.convert\_xml1
 ----------------------
 

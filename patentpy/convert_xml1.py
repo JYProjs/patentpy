@@ -67,6 +67,18 @@ def extractFields1(parsed):
 
 
 def xml1_to_df(input_file, output_file, append, header):
+    """Function that takes USPTO (2002-2004) data from XML file, extracts pertinent fields, 
+    and creates (or appends to) CSV output.
+
+    Args: 
+        input_file:  `string`, path of '.xml' file to read data from
+        output_file: `string`, path of '.csv' file to store data
+        append:  `bool`, open and writes to output_file in append mode if ``true``
+        header: `bool`, prints header as first line to csv output_file if ``true``
+    
+    Returns:
+        `int` -- number of patents read from XML file
+    """
     write_mode = 'a' if append else 'w'
     with open(input_file, 'rb') as f1, open (output_file, write_mode) as f2:
         if header:
