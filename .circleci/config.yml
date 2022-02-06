@@ -26,7 +26,7 @@ jobs:
           command: "pip install ."
       - run:
           name: "Test pkg functionality"
-          command: "python -m pytest --cov=. tests-python/"
+          command: "pytest --cov-report xml:cov.xml --cov=. tests-python/"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -36,3 +36,4 @@ workflows:
       - python3:
           post-steps:
             - codecov/upload:
+                file: "cov.xml"
