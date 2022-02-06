@@ -26,7 +26,7 @@ jobs:
           command: "pip install ."
       - run:
           name: "Test pkg functionality"
-          command: "pytest --cov-report xml:cov.xml --cov=. tests-python/"
+          command: "pytest --cov-report term --cov=. tests-python/"
       - store_artifacts:
           path: "./cov.xml"
 
