@@ -63,7 +63,7 @@ def test_gdt_no_53rd_wk():
 
 ### TEST_CONVERT_TO_DF ###
 # TO DO: test download zip, getting url, etc separately
-def convert_to_df():
+def test_ctd():
     # create test_df of dates, run func x2 and see if csv formatted version == df version
     test_df = pandas.DataFrame(data=[[1991, 1]], columns=['year', 'week'])
     df = convert_to_df(test_df)
@@ -73,13 +73,13 @@ def convert_to_df():
     assert df_from_csv.equals(df)
 
 # test ValueError -- incorrect column names
-def test_xtd1_bad_df():
+def test_ctd_bad_df():
     test_df = pandas.DataFrame(data=[[1991,1]], columns=['yr', 'wk'])
     with pytest.raises(ValueError, match= r"current columns"):
         convert_to_df(test_df)
 
 # test ValueError -- not CSV output_file
-def test_xtd1_not_CSV():
+def test_ctd_not_CSV():
     test_df = pandas.DataFrame(data=[[1991,1]], columns=['year', 'week'])
     with pytest.raises(ValueError, match= r".*.csv.*"):
         convert_to_df(test_df, "test.txt")
