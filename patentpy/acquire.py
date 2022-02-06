@@ -171,7 +171,7 @@ def convert_to_df(dates_df, output_file = None):
 
     if total_patents == 0:
         if not output_file:
-            print("ERROR, NO PATENTS FOUND, PLEASE RAISE A GITHUB ISSUE @ https://github.com/JYProjs/patentpy/issues")
+            raise Exception("ERROR, NO PATENTS FOUND, PLEASE RAISE A GITHUB ISSUE @ https://github.com/JYProjs/patentpy/issues")
             remove(temp_output_file)
         return -1 
     # get temp file contents and read into pandas as df if no output file specified

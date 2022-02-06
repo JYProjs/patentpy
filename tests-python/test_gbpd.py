@@ -16,7 +16,7 @@ def test_get_bulk_patent_data():
 
 # test Exception -- no uspto bulk data able to be converted
 def test_gbpd_no_data_returned():
-    with pytest.raises(Exception, match= r"bulk"):
+    with pytest.raises(Exception, match= r"NO PATENTS FOUND"):
         get_bulk_patent_data([i for i in range (2001, 2006, 2)], [53 for i in range(0, 3)])
 
 # test TypeError -- `years` & `weeks` not ints
