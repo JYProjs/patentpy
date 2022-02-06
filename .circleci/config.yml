@@ -26,7 +26,7 @@ jobs:
           command: "pip install ."
       - run:
           name: "Test pkg functionality"
-          command: "pytest --cov-report term --cov=. tests-python/"
+          command: "python3 -m pytest --cov-report xml --cov=. tests-python/" # running pytest cmd directly doesn't work for some reason...
       - store_artifacts:
           path: "./cov.xml"
 
