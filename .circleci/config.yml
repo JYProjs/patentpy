@@ -27,7 +27,9 @@ jobs:
       - run:
           name: "Test pkg functionality"
           command: "pytest --cov-report xml:cov.xml --cov=. tests-python/"
-
+      - store_artifacts:
+          path: "./test.xml"
+          
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -37,3 +39,4 @@ workflows:
           post-steps:
             - codecov/upload:
                 file: "cov.xml"
+                
