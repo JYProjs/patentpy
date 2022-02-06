@@ -5,6 +5,7 @@ Release Info
 ------------
 Current Version 0.2.0 changes:
  * refactored code for better maintainability
+ * added progress bar
  * fixed bug where inappropriately coded chars in XML1 (2000-2002) files threw lxml parsing errors (bad characters replaced by � symbol)
  * fixed bug where TXT (1976-2001) claims text incorporated char \'\\x9b\' (replaced with '!' to match ending '!', possibly control for brackets based on manual confirmation with uspto patent search results)
  * fixed spacing in TXT claims text
