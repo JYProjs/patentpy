@@ -158,30 +158,25 @@ def convert_to_df(dates_df, output_file = None):
                 pat_count = xml1_to_df(curr_file, csv_file, True, False)   # always append, no header, checked in file
             else:
                 pat_count = xml2_to_df(curr_file, csv_file, True, False)   # always append, no header, checked in file
+            total_patents += pat_count  # not used atm, may use in future
         except Exception as e:
             exc_type, exc_value, exc_traceback = sys.exc_info()
             traceback.print_exception(exc_type, exc_value, e.__traceback__)
-            print("UNABLE TO CONVERT DATA, SKIPPING PATENT DATA FOR WEEK {} OF YEAR {}...".format(curr_week, curr_year))
+            print("UNABLE TO CONVERT ALL PATENT DATA FOR WEEK {} OF YEAR {} DUE TO ABOVE EXCEPTION, SKIPPING REST...".format(curr_week, curr_year))
             continue
         finally:
             # remove xml before next iteration, skip this year's week's data if unable to read
             remove(curr_file)
-            
-        total_patents += pat_count
-
-    if total_patents == 0:
-        if not output_file:
-            raise Exception("ERROR, NO PATENTS FOUND, PLEASE RAISE A GITHUB ISSUE @ https://github.com/JYProjs/patentpy/issues")
-            remove(temp_output_file)
-        return -1 
+    
     # get temp file contents and read into pandas as df if no output file specified
     if output_file is None:
         try:
-            curr_df = pd.read_csv(temp_output_file)
-        except:
+            df = pd.read_csv(temp_output_file)
+            if df.shape[0] <= 0:
+                remove(temp_output_file)
+                raise Exception("ERROR, NO PATENTS FOUND, PLEASE RAISE A GITHUB ISSUE @ https://github.com/JYProjs/patentpy/issues")
+        except UnicodeDecodeError:
             raise Exception("PANDAS UNABLE TO PARSE FINAL CSV FILE, DATA IS STORED IN STILL STORED IN FILE: {}. DELETE AS NECESSARY!!!".format(temp_output_file))
         remove(temp_output_file)
 
-    
-
-    return True if output_file else curr_df
+    return True if output_file else df

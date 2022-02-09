@@ -53,8 +53,6 @@ patent_data = get_bulk_patent_data(year = 1976, week = 1)
 get_bulk_patent_data(year = [1980] * 5, week = [i for i in range(49,54)], output_file = "patent-data.csv")
 ```
 
-Note: Launch python in utf-8 mode, i.e. ``python -X utf8``, when on Windows for character encoding consistency. Read more about the [issue](https://github.com/JYProjs/patentpy/issues/10)
-
 ## Functionality
 
 ### Data collected for each patent

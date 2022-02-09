@@ -99,7 +99,7 @@ def xml2_to_df(input_file, output_file, append, header):
         `int` -- number of patents read from XML file
     """
     write_mode = 'a' if append else 'w'
-    with open(input_file, 'rb') as f1, open (output_file, write_mode) as f2:
+    with open(input_file, 'rb') as f1, open (output_file, write_mode, encoding='utf-8') as f2:
         if header:
             f2.write("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References,Claims\n")
 

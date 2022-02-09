@@ -54,9 +54,6 @@ It is recommended to use ``get_bulk_patent_data`` (which calls ``convert_to_df``
 calling ``convert_to_df`` directly as the former better handles invalid arguments. 
 Please carefully read the documentation for use.
 
-
-Note: Launch python in utf-8 mode, i.e. ``python -X utf8``, when on Windows for character encoding consistency. Read more about the [issue](https://github.com/JYProjs/patentpy/issues/10)
-
 Functionality
 -------------
 
