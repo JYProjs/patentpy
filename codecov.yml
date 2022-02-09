@@ -4,6 +4,10 @@ coverage:
       default:
         target: 75%
         threshold: 0%
+    patch:
+      default:
+        target: 50%
+
 
 ignore:
   - "setup.py"

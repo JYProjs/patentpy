@@ -39,6 +39,9 @@ def test_gbpd_missing():
     with pytest.raises(ValueError, match= r"missing or null"):
         get_bulk_patent_data([1991, None, 1993], [1, 3, 2])
 
+def test_gbpd_zero_patents():
+    with pytest.raises(Exception, match=r"NO PATENTS FOUND"):
+        get_bulk_patent_data(2001,53)
 
 ### TEST_GET_DATE_TUES ###
 # test get_date_tues with valid input
